@@ -1,0 +1,98 @@
+---
+/**
+ * AudioPlayer — the signature component. One instance per message.
+ * Works with a real recording (src) or shows a "recording to follow" state.
+ */
+interface Props {
+  title: string;            // e.g. "5 Points of PPE"
+  script: string;           // the spoken words
+  src?: string | null;      // path to audio file; null = not yet supplied
+  tag?: string;             // e.g. "Site entrance"
+  context?: string;         // e.g. "Live on site · Construction"
+  href?: string;            // link to the message page
+  compact?: boolean;
+}
+const { title, script, src = null, tag, context, href, compact = false } = Astro.props;
+const bars = [12, 28, 44, 22, 50, 34, 16, 40, 24, 36, 14, 30, 46, 20, 38, 12, 26, 42, 18, 32];
+const id = `ap-${Math.random().toString(36).slice(2, 8)}`;
+---
+<div class:list={['ap', { 'ap--compact': compact, 'ap--missing': !src }]} data-player data-src={src ?? ''}>
+  <div class="ap__top">
+    <span class="ap__context mono">{context ?? 'AudioSigns message'}</span>
+    {tag && <span class="ap__tag">{tag}</span>}
+  </div>
+  <div class="ap__row">
+    <button type="button" class="ap__play" aria-label={src ? `Play ${title}` : `${title}: recording not yet available`} data-play aria-describedby={id} disabled={!src}>
+      <svg class="ap__icon-play" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+      <svg class="ap__icon-pause" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <div class="ap__bars" aria-hidden="true">
+      {bars.map((h, i) => <span style={`height:${h}px; --i:${i}`}></span>)}
+    </div>
+    <span class="ap__time mono" data-time>{src ? '0:00' : '—'}</span>
+  </div>
+  <blockquote class="ap__script" id={id}>“{script}”</blockquote>
+  <div class="ap__foot">
+    <span>{title}{src ? ' · triggers on approach' : ''} {!src && <span class="todo">recording to follow</span>}</span>
+    {href && <a href={href} class="ap__link">Message details →</a>}
+  </div>
+  {src && <audio preload="none" src={src}></audio>}
+</div>
+
+<style>
+  .ap { display: flex; flex-direction: column; gap: 16px; background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--radius-lg); padding: 28px; color: var(--text-on-dark); }
+  .ap--compact { padding: 20px; gap: 12px; }
+  .ap__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .ap__context { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark-3); }
+  .ap__tag { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--accent-tint); color: var(--accent); white-space: nowrap; }
+  .ap__row { display: flex; align-items: center; gap: 20px; }
+  .ap--compact .ap__row { gap: 14px; }
+  .ap__play { flex: none; width: 64px; height: 64px; border-radius: 50%; border: 0; background: var(--accent); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+  .ap--compact .ap__play { width: 52px; height: 52px; }
+  .ap__play:focus-visible { outline: 3px solid var(--paper); outline-offset: 2px; }
+  .ap--missing .ap__play { background: var(--ink-4); color: var(--text-on-dark-3); cursor: not-allowed; }
+  .ap__icon-pause { display: none; }
+  .ap.is-playing .ap__icon-play { display: none; }
+  .ap.is-playing .ap__icon-pause { display: block; }
+  .ap__bars { flex: 1; display: flex; align-items: center; gap: 4px; height: 56px; min-width: 0; overflow: hidden; }
+  .ap__bars span { flex: none; width: 4px; border-radius: 2px; background: var(--ink-4); transition: background .2s; }
+  .ap__bars span.is-on { background: var(--accent); }
+  .ap.is-playing .ap__bars span.is-on { animation: pulse 0.9s ease-in-out infinite; animation-delay: calc(var(--i) * 45ms); transform-origin: center; }
+  @keyframes pulse { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.45); } }
+  @media (prefers-reduced-motion: reduce) { .ap.is-playing .ap__bars span.is-on { animation: none; } }
+  .ap__time { font-size: 13px; color: var(--text-on-dark-3); flex: none; }
+  .ap__script { margin: 0; padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--ink); border-radius: 0 8px 8px 0; font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.4; }
+  .ap--compact .ap__script { font-size: 16px; padding: 14px 16px; }
+  .ap__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--text-on-dark-3); flex-wrap: wrap; }
+  .ap__link { color: var(--text-on-dark); font-weight: 500; text-decoration: none; }
+  .ap__link:hover { color: var(--accent); }
+</style>
+
+<script>
+  function fmt(s: number) { const m = Math.floor(s / 60); const r = Math.floor(s % 60); return `${m}:${r.toString().padStart(2, '0')}`; }
+  document.querySelectorAll<HTMLElement>('[data-player]').forEach((el) => {
+    const audio = el.querySelector('audio');
+    const btn = el.querySelector<HTMLButtonElement>('[data-play]');
+    const time = el.querySelector<HTMLElement>('[data-time]');
+    const bars = Array.from(el.querySelectorAll<HTMLElement>('.ap__bars span'));
+    if (!btn) return;
+    if (!audio) {
+      btn.addEventListener('click', () => { btn.setAttribute('aria-label', 'Recording not yet available'); el.classList.add('is-missing'); });
+      return;
+    }
+    const paint = () => {
+      const p = audio.duration ? audio.currentTime / audio.duration : 0;
+      bars.forEach((b, i) => b.classList.toggle('is-on', i / bars.length <= p));
+      if (time) time.textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration || 0)}`;
+    };
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('audio').forEach((a) => { if (a !== audio) { a.pause(); } });
+      if (audio.paused) audio.play(); else audio.pause();
+    });
+    audio.addEventListener('play', () => el.classList.add('is-playing'));
+    audio.addEventListener('pause', () => el.classList.remove('is-playing'));
+    audio.addEventListener('ended', () => { el.classList.remove('is-playing'); audio.currentTime = 0; paint(); });
+    audio.addEventListener('timeupdate', paint);
+    audio.addEventListener('loadedmetadata', paint);
+  });
+</script>

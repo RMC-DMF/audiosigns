@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import AudioPlayer from '../../components/AudioPlayer.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../lib/site';
+const messages = (await getCollection('messages')).sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || a.data.title.localeCompare(b.data.title));
+const hazards = Array.from(new Set(messages.map((m) => m.data.hazard)));
+---
+<Base title="Talking Safety Sign Messages: Hear Them" description="Example AudioSigns messages from live sites: PPE at the gate, moving plant, working at height, hold the handrail, hygiene, access control. Press play; this is the demo.">
+  <PageHero eyebrow="Messages" title="Hear what your site would say." standfirst="Every AudioSign is scripted and recorded for the hazard it guards. These are examples from live sites. Press play; this is the demo." />
+
+  <section class="section dark" style="padding-top: 0;">
+    <div class="wrap stack stack--lg">
+      <div class="filters" role="group" aria-label="Filter by hazard">
+        <button type="button" class="chip is-active" data-filter="all">All</button>
+        {hazards.map((h) => <button type="button" class="chip" data-filter={h}>{h}</button>)}
+      </div>
+      <div class="grid grid-3" data-grid>
+        {messages.map((m) => (
+          <div data-hazard={m.data.hazard}>
+            <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />
+          </div>
+        ))}
+      </div>
+      <p class="small">Recordings marked “to follow” are real messages whose production audio hasn't been added to the site yet.</p>
+    </div>
+  </section>
+
+  <FinalCta heading="Don't hear your hazard?" body="Every message is scripted for the site it stands on. Tell us the hazard and we'll write it." />
+</Base>
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink-4); background: transparent; color: var(--text-on-dark); font-size: 14px; font-weight: 500; cursor: pointer; }
+  .chip.is-active { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+  [data-hazard].is-hidden { display: none; }
+</style>
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+  const items = document.querySelectorAll<HTMLElement>('[data-hazard]');
+  chips.forEach((c) => c.addEventListener('click', () => {
+    chips.forEach((x) => x.classList.toggle('is-active', x === c));
+    const f = c.dataset.filter;
+    items.forEach((i) => i.classList.toggle('is-hidden', f !== 'all' && i.dataset.hazard !== f));
+  }));
+</script>

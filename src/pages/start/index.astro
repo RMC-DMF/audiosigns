@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import { site, url } from '../../lib/site';
+const steps = [
+  ['Scoping call', 'Fifteen minutes. The hazard, where the sign goes, who passes it, which languages they speak, and whether it needs an alarm tone as well as a voice.'],
+  ['Script', 'We write the message for that spot: short, direct, in the words your workforce uses. You approve it before anything is recorded.'],
+  ['Artwork and recording', 'Your branding on the board. The message recorded in every language you need and sent to you to listen to before it’s built.'],
+  ['Build', 'Tooled and assembled to order in Ripon, North Yorkshire. Weatherproof, battery powered, mains option for high-traffic spots.'],
+  ['Delivery', 'A matter of days from sign-off for a single sign; larger orders take a little longer, and we’ll tell you how long when we quote. We ship worldwide.'],
+];
+---
+<Base title="Start with One Sign: Scope, Script, Build" description="Nothing here comes off a shelf. Each AudioSign is scripted, recorded, printed and built for the place it will stand, so the first step is a short conversation, not a basket.">
+  <PageHero eyebrow="Start" title="Start with one sign. We build it around the hazard." standfirst="Nothing here comes off a shelf. Each AudioSign is scripted, recorded, printed and built for the place it will stand, so the first step is a short conversation, not a basket." />
+
+  <section class="section">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-7 stack stack--lg">
+        <ol class="rule-list">
+          {steps.map(([h, p], i) => (
+            <li>
+              <span class="num">{i + 1}</span>
+              <h2 class="h3">{h}</h2>
+              <p style="font-size: 16px; color: var(--text-2);">{p}</p>
+            </li>
+          ))}
+        </ol>
+        <div class="card" style="gap: 8px;">
+          <h2 class="h3" style="font-size: 18px;">Pricing</h2>
+          <p style="font-size: 16px; color: var(--text-2);">Priced per order. Volume pricing applies to multi-site and multi-sign rollouts. Tell us what you need and sales will quote it; there's no list price because there's no standard sign.</p>
+        </div>
+      </div>
+
+      <form class="span-5 card form" name="start" method="POST" action={url('/start/thanks')} data-netlify="true" netlify-honeypot="company-website">
+        <input type="hidden" name="form-name" value="start">
+        <p class="visually-hidden"><label>Don't fill this in: <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+        <h2 class="h3">Book a scoping call</h2>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="company">Company</label><input id="company" name="company" required autocomplete="organization"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="phone">Phone <span class="small">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="country">Country</label><input id="country" name="country" autocomplete="country-name" placeholder="United Kingdom"></div>
+        <div class="field"><label for="sector">Sector</label>
+          <select id="sector" name="sector">
+            <option>Construction</option><option>Manufacturing</option><option>Warehousing &amp; Logistics</option><option>Healthcare</option><option>Public sector</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="hazard">Where are your signs being ignored?</label><textarea id="hazard" name="hazard" placeholder="The gate, the cutting station, the forklift lane…"></textarea></div>
+        <div class="field"><label for="languages">Languages needed <span class="small">(optional)</span></label><input id="languages" name="languages" placeholder="English, Polish, Welsh…"></div>
+        <div class="field"><label for="quantity">Roughly how many signs?</label>
+          <select id="quantity" name="quantity"><option>1</option><option>2–5</option><option>6–20</option><option>20+</option><option>Not sure yet</option></select>
+        </div>
+        <button type="submit" class="btn btn--accent" style="margin-top: 8px;">Book my scoping call</button>
+        <p class="small">Prefer to talk? <a href={site.phoneHref}>{site.phone}</a>, {site.hours}.</p>
+      </form>
+    </div>
+  </section>
+</Base>
+<style>
+  .form { gap: 16px; }
+  .form .btn { width: 100%; }
+</style>

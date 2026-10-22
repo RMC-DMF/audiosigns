@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Page-specific OG image path, optional */
+  image?: string;
+}
+const { title, description, image } = Astro.props;
+const fullTitle = title.includes('AudioSigns') ? title : `${title} | AudioSigns`;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  {image && <meta property="og:image" content={image}>}
+  <meta name="theme-color" content="#1A1A1C">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: site.name,
+    url: 'https://www.audiosigns.co.uk',
+    telephone: '+44 1765 522765',
+    address: { '@type': 'PostalAddress', streetAddress: 'Boroughbridge Road', addressLocality: 'Ripon', addressRegion: 'North Yorkshire', postalCode: 'HG4 1QW', addressCountry: 'GB' },
+  })} />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <Nav />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

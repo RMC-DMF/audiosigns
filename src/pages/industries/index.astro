@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../lib/site';
+const industries = (await getCollection('industries')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Industries: Talking Safety Signs by Sector" description="Talking safety signs for construction, manufacturing, warehousing and logistics, healthcare and the public sector. The hazards we see most, the messages that work, and who's already using them.">
+  <PageHero eyebrow="Industries" title="Whatever the risk, we speak safety." standfirst="Pick your sector. Each page shows the hazards we're used to, the messages that work, and who's already using them." />
+  <section class="section">
+    <div class="wrap grid grid-3">
+      {industries.map((i) => (
+        <a href={url(`/industries/${i.id}`)} class="card card--link">
+          <span class="h3">{i.data.title}</span>
+          <span style="font-size: 15px; color: var(--text-2);">{i.data.cardLine}</span>
+          <span class="link" style="align-self: flex-start; margin-top: auto; font-size: 15px;">See the hazards →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <FinalCta />
+</Base>

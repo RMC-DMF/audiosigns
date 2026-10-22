@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import AudioPlayer from '../../components/AudioPlayer.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../lib/site';
+const featured = (await getCollection('messages', ({ data }) => data.featured)).slice(0, 3);
+---
+<Base title="Thanks: We'll Be in Touch" description="Thanks for getting in touch with AudioSigns.">
+  <section class="dark" style="border-top: 1px solid var(--ink-3);">
+    <div class="wrap stack" style="gap: 20px; padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(40px, 6vw, 80px);">
+      <h1 class="h1">Got it. We'll be in touch within one working day.</h1>
+      <p class="lede" style="max-width: 40em;">We'll come back to book the scoping call and, if you've told us the hazard, with a first draft of the script. In the meantime, hear what a sign sounds like on a site like yours.</p>
+    </div>
+  </section>
+  <section class="section dark" style="padding-top: 0;">
+    <div class="wrap grid grid-3">
+      {featured.map((m) => <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />)}
+    </div>
+  </section>
+</Base>

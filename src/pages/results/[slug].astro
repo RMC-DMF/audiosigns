@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('caseStudies');
+  return cases.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+---
+<Base title={`${d.client}: ${d.sector} Case Study`} description={`${d.client}: ${d.headline}`}>
+  <section class="dark" style="border-top: 1px solid var(--ink-3);">
+    <div class="wrap stack" style="gap: 20px; padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(40px, 6vw, 80px);">
+      <p class="eyebrow">Case study · {d.sector}</p>
+      <h1 class="h1" style="max-width: 20ch;">{d.client}{d.location ? `, ${d.location}` : ''}</h1>
+      <p class="lede" style="max-width: 36em; font-family: var(--font-display); font-weight: 700; color: var(--text-on-dark);">{d.headline}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-7 prose">
+        <h2 class="h3">The problem</h2>
+        <p>{d.problem}</p>
+        <h2 class="h3">What we installed</h2>
+        <p>{d.installed}</p>
+        <h2 class="h3">What changed</h2>
+        <p>{d.changed}</p>
+        {d.todo && <p class="todo">{d.todo}</p>}
+      </div>
+      <figure class="span-5 card card--dark" style="margin: 0; gap: 16px; padding: 36px;">
+        <blockquote style="margin: 0; font-size: 19px; line-height: 1.5;">“{d.quote}”</blockquote>
+        <figcaption class="small" style="color: var(--text-on-dark-2);">{d.name}{d.role ? `, ${d.role}` : ''}</figcaption>
+        <div class="placeholder" style="aspect-ratio: 4/3; border-radius: 8px; background: var(--ink-2); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-3); font-size: 14px;">Photo: sign in situ at {d.client}</div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section white" style="padding-top: 32px; padding-bottom: 32px;">
+    <div class="wrap"><a href={url('/results')} class="link">← All results</a></div>
+  </section>
+
+  <FinalCta heading="Add your site to this page." />
+</Base>

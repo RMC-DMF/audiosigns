@@ -1,0 +1,51 @@
+---
+import { site, nav, cta, url } from '../lib/site';
+---
+<header class="nav">
+  <div class="wrap nav__row">
+    <a href={url('/')} class="nav__logo" aria-label="AudioSigns home">
+      <img src="/images/logo-white.png" alt="AudioSigns" width="106" height="44">
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav id="primary-nav" class="nav__links" aria-label="Primary">
+      {nav.map((n) => <a href={url(n.href)}>{n.label}</a>)}
+      <a href={site.phoneHref} class="nav__phone">{site.phone}</a>
+      <a href={url(cta.href)} class="btn btn--accent btn--sm nav__cta">{cta.label}</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav { background: var(--ink); color: var(--text-on-dark); }
+  .nav__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 80px; flex-wrap: wrap; }
+  .nav__logo img { height: 44px; width: auto; }
+  .nav__links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; }
+  .nav__links a { color: var(--text-on-dark); text-decoration: none; padding: 10px 0; }
+  .nav__links a:hover { color: var(--accent); }
+  .nav__phone { color: var(--text-on-dark-2) !important; font-variant-numeric: tabular-nums; margin-left: 8px; }
+  .nav__cta { color: var(--ink) !important; padding: 0 20px !important; }
+  .nav__toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--ink-4); border-radius: 6px; color: var(--text-on-dark); }
+  @media (max-width: 1240px) { .nav__phone { display: none; } }
+  @media (max-width: 1100px) {
+    .nav__row { min-height: 64px; }
+    .nav__logo img { height: 36px; }
+    .nav__toggle { display: inline-flex; }
+    .nav__links { display: none; flex-direction: column; align-items: stretch; width: 100%; gap: 4px; padding: 8px 0 20px; }
+    .nav__links a { padding: 12px 0; border-bottom: 1px solid var(--ink-3); }
+    .nav__links.is-open { display: flex; }
+    .nav__phone { margin-left: 0; display: block; }
+    .nav__cta { margin-top: 12px; justify-content: center; border-bottom: 0 !important; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav__toggle');
+  const links = document.getElementById('primary-nav');
+  btn?.addEventListener('click', () => {
+    const open = links?.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(!!open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+</script>

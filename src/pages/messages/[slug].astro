@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import AudioPlayer from '../../components/AudioPlayer.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getCollection } from 'astro:content';
+import { url, cta } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const messages = await getCollection('messages');
+  return messages.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const industries = await getCollection('industries');
+const sectors = entry.data.sectors.map((s) => industries.find((i) => i.id === s)).filter(Boolean);
+---
+<Base title={`${entry.data.title} Talking Safety Sign`} description={`“${entry.data.script}” — an AudioSigns talking safety sign message. Where it goes, why it's worded this way, and where it's in use.`}>
+  <section class="dark" style="border-top: 1px solid var(--ink-3);">
+    <div class="wrap grid grid-12" style="padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(40px, 6vw, 80px); align-items: center;">
+      <div class="span-6 stack" style="grid-column: span 6; gap: 16px;">
+        <p class="eyebrow">Messages · {entry.data.hazard}</p>
+        <h1 class="h1">{entry.data.title}</h1>
+        <p class="lede">{entry.data.alarm ? 'Alert tone, then the spoken message.' : 'Spoken message, triggered on approach.'}</p>
+      </div>
+      <div style="grid-column: span 6; min-width: 0;">
+        <AudioPlayer title={entry.data.title} script={entry.data.script} src={entry.data.audio} tag={entry.data.tag} context={`Live on site${sectors[0] ? ' · ' + sectors[0].data.title : ''}`} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-7 prose">
+        <h2 class="h3">What it says</h2>
+        <p>“{entry.data.script}”</p>
+        <h2 class="h3">Where it goes</h2>
+        <p>{entry.data.where}</p>
+        <h2 class="h3">Why this wording</h2>
+        <p>{entry.data.why}</p>
+        {entry.data.variants.length > 0 && (
+          <>
+            <h2 class="h3">Variants</h2>
+            <ul>{entry.data.variants.map((v) => <li>{v}</li>)}</ul>
+          </>
+        )}
+      </div>
+      <aside class="span-5 card" style="gap: 14px;">
+        <h2 class="h3" style="font-size: 18px;">Product facts</h2>
+        <dl class="facts">
+          <dt>Trigger</dt><dd>Motion sensor, plays when someone is within range <span class="todo">range TBC</span></dd>
+          <dt>Power</dt><dd>Battery; mains option for high-traffic locations <span class="todo">battery life TBC</span></dd>
+          <dt>Weather rating</dt><dd><span class="todo">IP rating TBC</span></dd>
+          <dt>Mounting</dt><dd>Heras fencing, shuttering, cladding, brickwork, stonework</dd>
+          <dt>Languages</dt><dd>Multiple recordings on one sign</dd>
+          <dt>Storage</dt><dd>Up to 8 minutes of audio per sign</dd>
+        </dl>
+        {entry.data.seenOn.length > 0 && <p class="small">Seen on: {entry.data.seenOn.join(' · ')}</p>}
+        <a href={url(cta.href)} class="btn btn--ink" style="align-self: flex-start; margin-top: 6px;">Start with this sign</a>
+      </aside>
+    </div>
+  </section>
+
+  <FinalCta heading="Trial this message on your site." body="We'll script it for your hazard, record it in your languages, and build it to order." />
+</Base>
+<style>
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; font-size: 15px; }
+  .facts dt { font-weight: 600; }
+  .facts dd { margin: 0; color: var(--text-2); }
+  @media (max-width: 900px) { [style*="span 6"] { grid-column: auto !important; } }
+</style>

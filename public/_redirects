@@ -1,0 +1,14 @@
+# 301s from the old WordPress site
+/about-us/          /about         301
+/about-us           /about         301
+/product/           /messages      301
+/product            /messages      301
+/applications/      /industries    301
+/applications       /industries    301
+/testimonials-2/    /results       301
+/testimonials-2     /results       301
+/enquiry/           /start         301
+/enquiry            /start         301
+/compliance/        /compliance    301
+/sustainability/    /about#sustainability  301
+/quality/           /about#quality  301

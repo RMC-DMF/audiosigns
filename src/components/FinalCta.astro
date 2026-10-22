@@ -1,0 +1,19 @@
+---
+import { site, url, cta } from '../lib/site';
+interface Props { heading?: string; body?: string }
+const { heading = 'See what they miss. Hear what works.', body = 'One sign, one hazard, built for your site in days. If your people start doing what it says, you’ll know what to order next.' } = Astro.props;
+---
+<section class="section">
+  <div class="wrap stack" style="align-items: flex-start;">
+    <h2 class="display" style="font-size: clamp(38px, 5vw, 60px); max-width: 14ch;">{heading}</h2>
+    <p class="body-lg" style="max-width: 36em;">{body}</p>
+    <div class="cta-row">
+      <a href={url(cta.href)} class="btn btn--accent">{cta.label}</a>
+      <a href={site.phoneHref} class="btn btn--ghost">Call {site.phone}</a>
+    </div>
+  </div>
+</section>
+<style>
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+  @media (max-width: 600px) { .cta-row { flex-direction: column; } .cta-row .btn { width: 100%; } }
+</style>

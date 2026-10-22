@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../lib/site';
+const cases = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
+const caseClients = cases.map((c) => c.id);
+const testimonials = (await getCollection('testimonials')).filter((t) => !caseClients.includes(t.id)).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="AudioSigns Case Studies & Testimonials | Real Sites, Real Results" description="Case studies and testimonials from Tarmac, Willmott Dixon, NHS Borders, BAM, Wates, Vistry and more. What was installed and what changed.">
+  <PageHero eyebrow="Results" title="Real sites. Real results." standfirst="We'd rather you heard it from the people who installed them. Four case studies with the detail, then everyone else in their own words." />
+
+  <section class="section">
+    <div class="wrap grid grid-2">
+      {cases.map((c) => (
+        <a href={url(`/results/${c.id}`)} class="card card--dark card--link" style="gap: 16px; padding: 36px;">
+          <span class="eyebrow" style="color: var(--accent);">{c.data.sector} · {c.data.client}{c.data.location ? `, ${c.data.location}` : ''}</span>
+          <span class="h3" style="font-size: 24px; line-height: 1.2;">{c.data.headline}</span>
+          <span class="small" style="color: var(--text-on-dark-2);">{c.data.name}{c.data.role ? `, ${c.data.role}` : ''}</span>
+          <span class="link" style="align-self: flex-start; margin-top: auto; color: var(--text-on-dark);">Read the case study →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="wrap stack stack--lg">
+      <h2 class="h2">In their words</h2>
+      <div class="grid grid-2" style="gap: 32px 48px;">
+        {testimonials.map((t) => (
+          <figure class="t">
+            <blockquote>“{t.data.quote}”</blockquote>
+            <figcaption class="small">{t.data.name ? `${t.data.name}, ${t.data.role} · ` : ''}{t.data.client}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinalCta heading="Add your site to this page." />
+</Base>
+<style>
+  .t { margin: 0; display: flex; flex-direction: column; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+  .t blockquote { margin: 0; font-size: 17px; line-height: 1.5; }
+</style>

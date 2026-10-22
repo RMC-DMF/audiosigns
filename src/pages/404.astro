@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/site';
+---
+<Base title="Page not found" description="That page isn't here.">
+  <section class="section">
+    <div class="wrap stack">
+      <p class="eyebrow">404</p>
+      <h1 class="h1">That one's not here.</h1>
+      <p class="lede">The page may have moved in the rebuild. Try the <a href={url('/')}>homepage</a> or the <a href={url('/messages')}>messages library</a>.</p>
+    </div>
+  </section>
+</Base>

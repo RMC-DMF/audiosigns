@@ -1,0 +1,17 @@
+---
+// Client names as text until logo files and permissions arrive. Swap each span for an <img> when cleared.
+const clients = ['Willmott Dixon', 'BAM', 'Wates', 'Galliford Try', 'Kier', 'Tarmac', 'Vistry', 'NHS Borders'];
+---
+<section aria-label="Clients" class="strip">
+  <div class="wrap strip__row">
+    <span class="eyebrow strip__label">On site with</span>
+    {clients.map((c) => <span class="strip__client">{c}</span>)}
+  </div>
+</section>
+<style>
+  .strip { border-bottom: 1px solid var(--rule); }
+  .strip__row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 40px; padding-top: 28px; padding-bottom: 28px; }
+  .strip__label { color: var(--text-3); font-size: 12px; }
+  .strip__client { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: #4A4640; }
+  @media (max-width: 600px) { .strip__row { gap: 8px 20px; } .strip__client { font-size: 15px; } }
+</style>

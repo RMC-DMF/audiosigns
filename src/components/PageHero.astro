@@ -1,0 +1,15 @@
+---
+interface Props { eyebrow?: string; title: string; standfirst?: string; dark?: boolean }
+const { eyebrow, title, standfirst, dark = true } = Astro.props;
+---
+<section class:list={['page-hero', { dark }]}>
+  <div class="wrap stack" style="gap: 20px; max-width: calc(var(--measure)); padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(40px, 6vw, 80px);">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1 class="h1" style="max-width: 16ch;">{title}</h1>
+    {standfirst && <p class="lede" style="max-width: 40em;">{standfirst}</p>}
+    <slot />
+  </div>
+</section>
+<style>
+  .page-hero.dark { border-top: 1px solid var(--ink-3); }
+</style>

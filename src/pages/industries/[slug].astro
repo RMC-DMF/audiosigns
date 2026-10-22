@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import AudioPlayer from '../../components/AudioPlayer.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getCollection, render } from 'astro:content';
+import { url, cta } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const industries = await getCollection('industries');
+  return industries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const allMessages = await getCollection('messages');
+const messages = entry.data.messages.map((id) => allMessages.find((m) => m.id === id)).filter(Boolean);
+const allTestimonials = await getCollection('testimonials');
+const testimonials = entry.data.testimonials.map((id) => allTestimonials.find((t) => t.id === id)).filter(Boolean);
+---
+<Base title={entry.data.titleTag} description={entry.data.description}>
+  <PageHero eyebrow={`Industries · ${entry.data.title}`} title={entry.data.h1} />
+
+  <section class="section">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-7 prose">
+        <Content />
+      </div>
+      <aside class="span-5 card" style="gap: 16px;">
+        <h2 class="h3">The hazards we see most</h2>
+        <ul class="hazards">
+          {entry.data.hazards.map((h) => <li>{h}</li>)}
+        </ul>
+        <a href={url(cta.href)} class="btn btn--ink" style="align-self: flex-start; margin-top: 8px;">Start with one sign</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="wrap stack stack--lg">
+      <div class="stack" style="gap: 12px;">
+        <p class="eyebrow">Messages for this sector</p>
+        <h2 class="h2">Hear what your site would say.</h2>
+      </div>
+      <div class="grid grid-3">
+        {messages.map((m) => m && (
+          <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />
+        ))}
+      </div>
+      <a href={url('/messages')} class="link" style="align-self: flex-start;">All messages →</a>
+    </div>
+  </section>
+
+  {testimonials.length > 0 && (
+    <section class="section white">
+      <div class="wrap grid grid-2">
+        {testimonials.map((t) => t && (
+          <figure class="t">
+            <blockquote>“{t.data.quote}”</blockquote>
+            <figcaption class="small">{t.data.name ? `${t.data.name}, ${t.data.role} · ` : ''}{t.data.client}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <FinalCta heading="Book a trial on your site." body="One sign, one hazard, built for your site in days. Tell us where the signs are being ignored." />
+</Base>
+<style>
+  .hazards { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .hazards li { padding-left: 18px; position: relative; font-size: 16px; color: var(--text-2); }
+  .hazards li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+  .t { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .t blockquote { margin: 0; font-size: 18px; line-height: 1.45; }
+</style>

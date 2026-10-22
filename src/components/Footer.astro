@@ -1,0 +1,45 @@
+---
+import { site, nav, url } from '../lib/site';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <img src="/images/logo-white.png" alt="AudioSigns" width="135" height="56">
+      <p>Talking safety signs, designed and built in Ripon, North Yorkshire. Shipped worldwide.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer">
+      <div>
+        {nav.slice(0, 4).map((n) => <a href={url(n.href)}>{n.label}</a>)}
+      </div>
+      <div>
+        {nav.slice(4).map((n) => <a href={url(n.href)}>{n.label}</a>)}
+        <a href={url('/about') + '#sustainability'}>Sustainability</a>
+        <a href={url('/about') + '#quality'}>Quality</a>
+      </div>
+      <div>
+        <a href={site.phoneHref}>{site.phone}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <span>{site.address}</span>
+        <span class="small">{site.hours}</span>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer__legal">
+    <span>© {year} {site.legalName}</span>
+    <a href={url('/privacy')}>Privacy</a>
+  </div>
+</footer>
+
+<style>
+  .footer { background: var(--ink); color: var(--text-on-dark-2); padding: 64px 0 40px; font-size: 15px; }
+  .footer__grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px; }
+  .footer__brand { display: flex; flex-direction: column; gap: 16px; max-width: 320px; }
+  .footer__brand img { height: 56px; width: auto; }
+  .footer__nav { display: flex; flex-wrap: wrap; gap: 16px 40px; }
+  .footer__nav > div { display: flex; flex-direction: column; gap: 10px; }
+  .footer__nav a { color: var(--text-on-dark); text-decoration: none; }
+  .footer__nav a:hover { color: var(--accent); }
+  .footer__legal { margin-top: 40px; border-top: 1px solid var(--ink-3); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--text-on-dark-3); }
+  .footer__legal a { color: inherit; text-decoration: none; }
+</style>

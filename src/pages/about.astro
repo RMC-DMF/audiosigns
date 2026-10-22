@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { site } from '../lib/site';
+---
+<Base title="About AudioSigns | Talking Safety Signs, Made in Ripon" description="AudioSigns began in 2016 on a working site where the signs were all there and nobody was looking at them. Designed, assembled and despatched from Ripon, North Yorkshire.">
+  <PageHero eyebrow="About" title="Meet the voice behind the voice." />
+
+  <section class="section">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-7 prose">
+        <h2 class="h3">Where it started</h2>
+        <p>AudioSigns began in 2016 with a simple observation on a working site: the signs were all there, and nobody was looking at them. David Crack had spent long enough around health and safety to know this wasn't a signage problem. It was an attention problem. The fix had to be something the brain couldn't file away.</p>
+        <p class="todo">David to supply: background before AudioSigns, and the site or moment that prompted the idea.</p>
+
+        <h2 class="h3">How we built it</h2>
+        <p>We worked with a neuroscientist specialising in sound perception <span class="todo">name TBC</span> to understand why a spoken warning gets through when a printed one doesn't, and we designed the product around that: a sensor so it only speaks when someone's there, a scripted message for each hazard, and a voice recorded to carry authority without aggression.</p>
+
+        <h2 class="h3">How we work</h2>
+        <p>Every sign is scripted with the client. Generic recordings are compromises; the words, the pace and the tone are chosen for the site, the hazard and the people who'll hear it. Bespoke artwork and a recorded message usually turn around in a matter of days, and we ship worldwide.</p>
+
+        <h2 class="h3">Where we are</h2>
+        <p>Designed, assembled and despatched from Ripon, North Yorkshire. {site.address}. <a href={site.phoneHref}>{site.phone}</a>.</p>
+      </div>
+      <div class="span-5 stack">
+        <div class="placeholder" style="aspect-ratio: 4/5; border-radius: var(--radius-lg); background: var(--ink-2); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-3); font-size: 14px; text-align: center; padding: 24px;">Photo: David on site, a sign on Heras fencing behind him</div>
+        <div class="card" id="sustainability" style="gap: 8px;">
+          <h3 class="h3" style="font-size: 18px;">Sustainability</h3>
+          <p style="font-size: 15px; color: var(--text-2);">Battery powered, no wiring, boards re-usable across sites. <span class="todo">confirm claims</span></p>
+        </div>
+        <div class="card" id="quality" style="gap: 8px;">
+          <h3 class="h3" style="font-size: 18px;">Quality</h3>
+          <p style="font-size: 15px; color: var(--text-2);"><span class="todo">ISO / testing / certification to confirm before claiming</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FinalCta />
+</Base>

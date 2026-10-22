@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { url } from '../lib/site';
+
+const sources = [
+  ['Thorley, Hellier & Edworthy', 'Habituation to visual warnings', 'Contemporary Ergonomics, Taylor & Francis', 'https://www.taylorfrancis.com/books/9780429101670/chapters/10.1201/b12798-36'],
+  ['Vance, Jenkins, Anderson et al. (2018)', 'Tuning out security warnings: a longitudinal examination of habituation through fMRI, eye tracking and field experiments', 'MIS Quarterly 42(2)', 'https://aisel.aisnet.org/misq/vol42/iss2/3'],
+  ['Sokolov (1963)', 'Perception and the Conditioned Reflex', 'Pergamon', 'https://en.wikipedia.org/wiki/Orienting_response'],
+  ['Stekelenburg & van Boxtel (2002)', 'Pericranial muscular, respiratory and heart rate components of the orienting response', 'Psychophysiology 39(6), 707–722', 'https://pubmed.ncbi.nlm.nih.gov/12462499'],
+  ['Vachon, Hughes & Jones (2012)', 'Auditory attentional capture: the role of expectation', 'Royal Holloway, University of London', 'https://repository.royalholloway.ac.uk/items/00fe839e-32d4-b688-d168-f33dd5ad3c6c/10/Vachon_Hughes_Jones_2012_.pdf'],
+  ['Wogalter, Racicot, Kalsher & Simpson', 'Personalization of warning signs: the role of perceived relevance on behavioral compliance', 'International Journal of Industrial Ergonomics', 'https://swov.nl/en/publicatie/personalization-warning-signs-role-perceived-relevance-behavioral-compliance'],
+  ['Wogalter & Young (1991)', 'Behavioural compliance to voice and print warnings', 'Ergonomics 34(1), 79–89', 'https://trid.trb.org/View/366611'],
+  ['Wogalter, Rashid, Clarke & Kalsher (1991)', 'Evaluating the behavioral effectiveness of a multi-modal voice warning sign in a visually cluttered environment', 'Proc. Human Factors Society 35th Annual Meeting, 718–722', ''],
+  ['Wogalter, Kalsher & Racicot (1993)', 'Behavioral compliance with warnings: effects of voice, context and location', 'Safety Science 16, 637–654', ''],
+  ['Kang & Momtaz (2018)', 'Assessment of driver compliance on roadside safety signs with auditory warning sounds', 'Journal of Traffic and Transportation Engineering', 'https://doaj.org/article/e90fffc4e2f740a69777d6ae3792fe10'],
+  ['UK Statutory Instrument 1996/341', 'The Health and Safety (Safety Signs and Signals) Regulations 1996', 'legislation.gov.uk', 'https://www.legislation.gov.uk/uksi/1996/341'],
+];
+---
+<Base title="Why Talking Safety Signs Work: The Science" description="Why people stop seeing safety signs, why a spoken message gets through, and what the compliance research actually shows. Every claim linked to its source.">
+  <PageHero eyebrow="Why audio works" title="Backed by science. Built for safety." standfirst="Safety signs fail for a reason that has nothing to do with the sign. This page explains what happens in the brain when a warning is repeated, why a spoken message gets through, and what the research actually shows. Every claim links to its source." />
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 class="h2">1. Why people stop seeing signs</h2>
+      <p>A warning only keeps your attention if something reinforces it. On most sites, nothing does. The forklift lane is usually empty. The drop is behind a barrier. The sign says “danger” a thousand times and nothing happens a thousand times, so the brain does what brains do with any repeated, unreinforced signal: it files it as background.</p>
+      <p>Psychologists call this habituation. It was first described in the 1960s and it has been measured directly in safety warnings. Researchers at the University of Plymouth showed that compliance with a visual warning falls over repeated exposure, and that changing the warning restores it. A 2018 study in <em>MIS Quarterly</em> used fMRI and eye-tracking over a five-day working week and found attention to a repeated warning declining in the brain within days, with real-world adherence falling substantially over three weeks.</p>
+      <p>The practical point: a printed sign is at its most effective on the day it goes up. Everything after that is decline.</p>
+
+      <h2 class="h2">2. Why a sound gets through</h2>
+      <p>The brain treats a new sound differently from a familiar sight. An unexpected sound triggers what is called the orienting response: an involuntary turn of attention that happens before you have decided to listen. It can be measured in heart rate and skin conductance, and it occurs even for quiet sounds when someone is absorbed in a task.</p>
+      <p>Speech is the strongest trigger. Comprehensible speech captures attention more than acoustically matched non-speech sound, which is why a voice saying “hard hats beyond this point” works where a buzzer becomes wallpaper.</p>
+      <p>The orienting response habituates too. That is why AudioSigns only speak when someone approaches, and why we script messages for the specific hazard rather than playing a generic loop. A message that plays on approach is new on every approach.</p>
+
+      <h2 class="h2">3. Why the message has to be aimed at you</h2>
+      <p>People don't just stop seeing signs. They decide, without noticing they've decided, that the sign isn't for them. Wogalter and colleagues found that compliance with a highly visible posted sign was significantly lower than compliance with the same warning delivered as part of the task, because a generic sign reads as someone else's instruction.</p>
+      <p>An AudioSign is triggered by your approach, speaks your language, and names the hazard in front of you. It is hard to hear “keep to the walkway” as you step off the walkway and conclude it meant someone else.</p>
+
+      <h2 class="h2">4. What the compliance research shows</h2>
+      <p>The question that matters is not whether people notice a warning but whether they do what it says. The clearest evidence comes from Michael Wogalter's research programme at North Carolina State University, which measured behaviour rather than intention.</p>
+      <ul>
+        <li><strong>Wogalter &amp; Young (1991), <em>Ergonomics</em>:</strong> two laboratory experiments and a field test in a shopping mall. A warning given by voice as well as in print produced significantly higher compliance than the printed warning alone.</li>
+        <li><strong>Wogalter, Rashid, Clarke &amp; Kalsher (1991):</strong> a voice warning sign tested in a visually cluttered environment, the conditions of a working site.</li>
+        <li><strong>Wogalter, Kalsher &amp; Racicot (1993), <em>Safety Science</em>:</strong> voice warnings and task-relevant placement both raised compliance.</li>
+        <li><strong>Kang &amp; Momtaz (2018):</strong> drivers frequently failed to register roadside safety signs even in good visibility; adding an auditory warning increased compliance.</li>
+      </ul>
+
+      <h2 class="h2">5. What we don't claim</h2>
+      <p>Audio is not magic. The Regulations are right that an acoustic signal should not be used where ambient noise is too high, and research on “inattentional deafness” shows people can miss sounds under heavy visual load. What the evidence supports is that sound plus visual is more robust than either alone. That is what an AudioSign is: the printed sign is still there; it just speaks.</p>
+
+      <h2 class="h2">6. Recognised in law</h2>
+      <p>The Health and Safety (Safety Signs and Signals) Regulations 1996 define a safety sign to include “a verbal communication”: a predetermined spoken message delivered by a human or artificial voice. <a href={url('/compliance')}>Read what the Regulations say →</a></p>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="wrap stack">
+      <h2 class="h3">Sources</h2>
+      <ol class="sources">
+        {sources.map(([author, title, pub, link]) => (
+          <li>
+            <span>{author}. <em>{title}</em>. {pub}.</span>
+            {link ? <a href={link} rel="noopener">Source ↗</a> : <span class="todo">link to add</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <FinalCta heading="Test it on your site." body="One sign, one hazard, built for your site in days." />
+</Base>
+<style>
+  .sources { padding-left: 1.4em; display: flex; flex-direction: column; gap: 12px; font-size: 15px; color: var(--text-2); }
+  .sources li { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .sources a { color: var(--text); white-space: nowrap; }
+</style>
