@@ -11,15 +11,19 @@ interface Props {
   context?: string;         // e.g. "Live on site · Construction"
   href?: string;            // link to the message page
   compact?: boolean;
+  alarm?: boolean;          // message is preceded by an alert tone
 }
-const { title, script, src = null, tag, context, href, compact = false } = Astro.props;
+const { title, script, src = null, tag, context, href, compact = false, alarm = false } = Astro.props;
 const bars = [12, 28, 44, 22, 50, 34, 16, 40, 24, 36, 14, 30, 46, 20, 38, 12, 26, 42, 18, 32];
 const id = `ap-${Math.random().toString(36).slice(2, 8)}`;
 ---
 <div class:list={['ap', { 'ap--compact': compact, 'ap--missing': !src }]} data-player data-src={src ?? ''}>
   <div class="ap__top">
     <span class="ap__context mono">{context ?? 'AudioSigns message'}</span>
-    {tag && <span class="ap__tag">{tag}</span>}
+    <span class="ap__tags">
+      {alarm && <span class="ap__tag ap__tag--alarm"><span class="ap__dot" aria-hidden="true"></span>Alert tone</span>}
+      {tag && <span class="ap__tag">{tag}</span>}
+    </span>
   </div>
   <div class="ap__row">
     <button type="button" class="ap__play" aria-label={src ? `Play ${title}` : `${title}: recording not yet available`} data-play aria-describedby={id} disabled={!src}>
@@ -44,9 +48,17 @@ const id = `ap-${Math.random().toString(36).slice(2, 8)}`;
   .ap--compact { padding: 20px; gap: 12px; }
   .ap__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .ap__context { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark-3); }
-  .ap__tag { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--accent-tint); color: var(--accent); white-space: nowrap; }
+  .ap__tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .ap__tag { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--accent-tint); color: var(--accent); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+  .ap__tag--alarm { background: var(--warn-tint); color: #F2A79D; }
+  .ap__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); animation: dot-pulse 1.6s ease-in-out infinite; }
+  @keyframes dot-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.75); } }
+  .ap--missing .ap__bars span { background: var(--ink-3); }
   .ap__row { display: flex; align-items: center; gap: 20px; }
   .ap--compact .ap__row { gap: 14px; }
+  .ap__play { transition: transform var(--t-fast) var(--ease-out), background-color var(--t-fast); }
+  .ap__play:hover:not(:disabled) { transform: scale(1.05); }
+  .ap__play:active:not(:disabled) { transform: scale(.97); }
   .ap__play { flex: none; width: 64px; height: 64px; border-radius: 50%; border: 0; background: var(--accent); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
   .ap--compact .ap__play { width: 52px; height: 52px; }
   .ap__play:focus-visible { outline: 3px solid var(--paper); outline-offset: 2px; }

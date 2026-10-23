@@ -20,7 +20,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
     <div class="wrap grid grid-12 hero__grid">
       <div class="span-7 stack" style="gap: 28px;">
         <p class="eyebrow">Talking safety signs</p>
-        <h1 class="display" style="max-width: 12ch;">The sign they can't walk past.</h1>
+        <h1 class="display kinetic" style="max-width: 12ch;" aria-label="The sign they can't walk past.">{"The sign they can't walk past.".split(' ').map((w, i) => <><span class="w" style={`--i:${i}`} aria-hidden="true">{w}</span>{' '}</>)}</h1>
         <p class="lede" style="max-width: 34em;">AudioSigns speak as people approach. A spoken warning cuts through the sign blindness that sets in within days on every site, and it's a form of safety sign UK law has recognised since 1996.</p>
         <div class="hero__ctas">
           <a href={url(cta.href)} class="btn btn--accent">{cta.label}</a>
@@ -32,7 +32,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
         <p class="small">Every sign scripted, recorded and built to order in Ripon. Days, not weeks. Shipped worldwide.</p>
       </div>
       <div class="span-5">
-        {hero && <AudioPlayer title={hero.data.title} script={hero.data.script} src={hero.data.audio} tag={hero.data.tag} context="Live on site · Construction" href={url(`/messages/${hero.id}`)} />}
+        {hero && <AudioPlayer title={hero.data.title} script={hero.data.script} src={hero.data.audio} alarm={hero.data.alarm} tag={hero.data.tag} context="Live on site · Construction" href={url(`/messages/${hero.id}`)} />}
       </div>
     </div>
   </section>
@@ -47,7 +47,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
         <p class="body-lg">It isn't carelessness. It's how the brain works. A warning that is never followed by the hazard it warns of is never reinforced, so the brain files it as background. Psychologists call it habituation; site managers call it sign blindness. Brain-imaging research shows attention to a repeated warning drops measurably within a single working week.</p>
         <p class="body-lg">The result is a control measure that looks compliant and does nothing. The PPE sign at the gate, the “keep to the walkway” board by the loading bay, the “hold the handrail” notice on the stairs: all still there, all unseen.</p>
       </div>
-      <div class="span-5 card" style="gap: 8px; padding: 36px;">
+      <div class="span-5 card reveal" style="gap: 8px; padding: 36px;">
         <span class="stat stat--xl">126</span>
         <p class="h3" style="margin-top: 8px; font-size: 22px;">people were killed at work in Great Britain last year.</p>
         <p class="body-lg"><strong style="color: var(--accent-ink);">31</strong> of them fell from height.</p>
@@ -65,17 +65,17 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
         <p class="body-lg">AudioSigns were developed with a neuroscientist who specialises in how people perceive sound. <span class="todo">confirm name</span> Three things make a spoken warning work where a printed one has stopped working.</p>
       </div>
       <div class="grid grid-3">
-        <article class="card">
+        <article class="card reveal" data-delay="1">
           <span class="mono" style="font-size: 13px; color: var(--accent-ink);">01</span>
           <h3 class="h3">It's new every time</h3>
           <p style="font-size: 16px; color: var(--text-2);">A sound that isn't part of the normal background triggers the orienting response: an involuntary shift of attention before you've decided to listen. A sign on a fence stops being new after a day. A message that plays as you approach is new on every approach.</p>
         </article>
-        <article class="card">
+        <article class="card reveal" data-delay="2">
           <span class="mono" style="font-size: 13px; color: var(--accent-ink);">02</span>
           <h3 class="h3">Speech beats a beep</h3>
           <p style="font-size: 16px; color: var(--text-2);">The brain gives speech priority over tones and alarms. A voice saying “hard hats and hi-vis beyond this point” is harder to tune out than a klaxon, and it tells people what to do rather than just that something is wrong.</p>
         </article>
-        <article class="card">
+        <article class="card reveal" data-delay="3">
           <span class="mono" style="font-size: 13px; color: var(--accent-ink);">03</span>
           <h3 class="h3">It's aimed at you</h3>
           <p style="font-size: 16px; color: var(--text-2);">People ignore a sign they assume isn't for them. A message triggered by your approach, in your language, recorded for this site and this hazard, is hard to dismiss as someone else's problem.</p>
@@ -89,7 +89,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
   <section class="section white" id="results">
     <div class="wrap grid grid-12">
       {tarmac && (
-        <div class="span-5 card card--dark" style="gap: 20px; padding: 40px;">
+        <div class="span-5 card card--dark reveal" style="gap: 20px; padding: 40px;">
           <p class="eyebrow" style="color: var(--accent);">Case study · {tarmac.data.client}{tarmac.data.location ? `, ${tarmac.data.location}` : ''}</p>
           <p class="h2" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.12;">{tarmac.data.headline}</p>
           <p class="small" style="color: var(--text-on-dark-2); font-size: 15px;">{tarmac.data.name}, {tarmac.data.role}</p>
@@ -119,7 +119,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
       <h2 class="h2">Whatever the risk, we speak safety.</h2>
       <div class="grid grid-5" style="gap: 16px;">
         {industries.map((i) => (
-          <a href={url(`/industries/${i.id}`)} class="card card--link" style="padding: 24px; min-height: 200px; gap: 10px;">
+          <a href={url(`/industries/${i.id}`)} class="card card--link reveal" data-delay={String(Math.min(i.data.order, 4))} style="padding: 24px; min-height: 200px; gap: 10px;">
             <span class="h3" style="font-size: 19px;">{i.data.title}</span>
             <span style="font-size: 14px; color: var(--text-2);">{i.data.cardLine}</span>
           </a>
@@ -137,7 +137,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
         <p class="lede" style="font-size: 17px;">Signage is a control measure in your risk assessment. If it's being walked past, the control isn't working.</p>
         <a href={url('/compliance')} class="link" style="align-self: flex-start; margin-top: 8px;">What the Regulations say →</a>
       </div>
-      <div class="span-7 statute">
+      <div class="span-7 statute statute--marked">
         <p class="mono" style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-on-dark-3);">The Health and Safety (Safety Signs and Signals) Regulations 1996 · SI 1996/341 · Regulation 2</p>
         <p>“safety sign” means a sign … providing information or instruction about health or safety at work by means of a signboard, a safety colour, an illuminated sign, an acoustic signal, <mark>a verbal communication</mark> or a hand signal;</p>
         <p>“verbal communication” means <mark>a predetermined spoken message communicated by a human or artificial voice</mark>;</p>

@@ -22,7 +22,7 @@ const sectors = entry.data.sectors.map((s) => industries.find((i) => i.id === s)
         <p class="lede">{entry.data.alarm ? 'Alert tone, then the spoken message.' : 'Spoken message, triggered on approach.'}</p>
       </div>
       <div style="grid-column: span 6; min-width: 0;">
-        <AudioPlayer title={entry.data.title} script={entry.data.script} src={entry.data.audio} tag={entry.data.tag} context={`Live on site${sectors[0] ? ' · ' + sectors[0].data.title : ''}`} />
+        <AudioPlayer title={entry.data.title} script={entry.data.script} src={entry.data.audio} alarm={entry.data.alarm} tag={entry.data.tag} context={`Live on site${sectors[0] ? ' · ' + sectors[0].data.title : ''}`} />
       </div>
     </div>
   </section>

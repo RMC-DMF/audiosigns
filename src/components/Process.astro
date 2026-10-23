@@ -19,7 +19,7 @@ const steps = [
     </div>
     <ol class="rule-list grid-5">
       {steps.map(([h, p], i) => (
-        <li>
+        <li class="reveal" data-delay={String(Math.min(i, 4))}>
           <span class="num">{i + 1}</span>
           <h3 class="h3" style="font-size: 20px;">{h}</h3>
           <p class="small" style="font-size: 15px; color: var(--text-2);">{p}</p>

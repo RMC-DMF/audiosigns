@@ -43,7 +43,7 @@ const testimonials = entry.data.testimonials.map((id) => allTestimonials.find((t
       </div>
       <div class="grid grid-3">
         {messages.map((m) => m && (
-          <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />
+          <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} alarm={m.data.alarm} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />
         ))}
       </div>
       <a href={url('/messages')} class="link" style="align-self: flex-start;">All messages →</a>

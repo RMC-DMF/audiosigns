@@ -15,7 +15,7 @@ const fullTitle = title.includes('AudioSigns') ? title : `${title} | AudioSigns`
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : Astro.url.pathname;
 ---
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,5 +47,17 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString(
     <slot />
   </main>
   <Footer />
+  <script>
+    document.documentElement.classList.remove('no-js');
+    const els = document.querySelectorAll<HTMLElement>('.reveal');
+    if (els.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+      els.forEach((el) => io.observe(el));
+    } else {
+      els.forEach((el) => el.classList.add('is-in'));
+    }
+  </script>
 </body>
 </html>
