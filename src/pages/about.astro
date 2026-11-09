@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import FinalCta from '../components/FinalCta.astro';
-import { site } from '../lib/site';
+import { site, url } from '../lib/site';
 ---
 <Base title="About AudioSigns | Talking Safety Signs, Made in Ripon" description="AudioSigns was founded by David Crack, a former health and safety manager with twenty years in loudspeaker manufacturing, after watching experienced staff walk past the signs they'd been trained on. Designed, assembled and despatched from Ripon, North Yorkshire.">
   <PageHero eyebrow="About" title="Meet the voice behind the voice." />
@@ -29,7 +29,7 @@ import { site } from '../lib/site';
         <div class="placeholder" style="aspect-ratio: 4/5; border-radius: var(--radius-lg); background: var(--ink-2); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-3); font-size: 14px; text-align: center; padding: 24px;">Photo: David on site, a sign on Heras fencing behind him</div>
         <div class="card" id="quality" style="gap: 8px;">
           <h3 class="h3" style="font-size: 18px;">Quality and certification</h3>
-          <p style="font-size: 15px; color: var(--text-2);">CE and UKCA certified. Designed by a founder who spent years writing and auditing ISO 9001 systems, which shows in the paperwork.</p>
+          <p style="font-size: 15px; color: var(--text-2);">CE and UKCA marked, independently tested to the EMC and electrical-safety standards, RoHS compliant. Designed by a founder who spent years writing and auditing ISO 9001 systems, which shows in the paperwork. <a href={url('/product-compliance')}>Standards and declarations →</a></p>
         </div>
       </div>
     </div>

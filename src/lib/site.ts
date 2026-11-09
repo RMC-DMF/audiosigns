@@ -6,6 +6,7 @@ export const site = {
   address: 'Boroughbridge Road, Ripon, North Yorkshire HG4 1QW',
   hours: 'Monday to Friday, 9am to 5pm UK time',
   legalName: 'AudioSigns Ltd',
+  registeredOffice: 'Harelands Courtyard Offices, Moor Road, Melsonby, Richmond, North Yorkshire DL10 5NY',
 };
 
 const preview = process.env.PREVIEW === '1';

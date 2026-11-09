@@ -30,7 +30,7 @@ Copy any file in `src/content/messages/`, change the slug (file name), fill in t
 
 Search the source for `todo` (the class) and `TODO`. Each one is a fact David needs to confirm: the neuroscientist, the 6x source (not on the site until sourced), product specs, IP rating, battery life, privacy notice, manufacturing testimonial, email address, registered company name.
 
-`public/audio/placeholder.wav` is a chime so the player can be demonstrated. Replace with real recordings and set `audio` in the three featured messages.
+Audio in `public/audio/` is David's production recordings, converted to mono 96k MP3 and loudness-normalised to -16 LUFS so they play at the same level. Add new ones the same way: `ffmpeg -i in.mp3 -af loudnorm=I=-16:TP=-1.5:LRA=11 -ac 1 -ar 44100 -b:a 96k public/audio/<slug>.mp3`.
 
 Client names on the homepage strip are text; swap for logos in `src/components/ClientStrip.astro` once permissions are in.
 
