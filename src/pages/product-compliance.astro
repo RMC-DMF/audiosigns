@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { url } from '../lib/site';
+
+const standards = [
+  'BS EN 61000-6-3:2007 + A1:2011', 'BS EN 61000-3-2:2014', 'BS EN 61000-3-3:2013', 'BS EN 61000-6-1:2017',
+  'BS EN 61000-4-2:2009', 'BS EN 61000-4-3:2006 + A1:2008 + A2:2010', 'BS EN 61000-4-4:2012', 'BS EN 61000-4-5:2014',
+  'BS EN 61000-4-6:2014', 'BS EN 61000-4-8:2010', 'BS EN 61000-4-11:2004', 'BS EN IEC 62368-1:2020',
+];
+const directives = [
+  ['RoHS', 'Restriction of Hazardous Substances (2011/65/EU; UK S.I. 2012 No. 3033)', 'No lead, mercury, cadmium, hexavalent chromium, PBB or PBDE above the permitted levels.'],
+  ['EMC', 'Electromagnetic Compatibility (2014/30/EU; UK EMC Regulations 2016)', 'Independently tested so the sign neither causes nor suffers electromagnetic interference near other equipment.'],
+  ['LVD', 'Low Voltage Directive (2014/35/EU; UK Electrical Equipment (Safety) Regulations 2016)', 'Designed and tested to protect people, animals and property from electrical and mechanical hazards.'],
+  ['WEEE', 'Waste Electrical and Electronic Equipment (2012/19/EU)', 'We work with authorised regional schemes for collection, recovery and recycling at end of life.'],
+  ['Batteries', 'Batteries Directive (2006/66/EC)', 'Batteries supplied comply with hazardous-metal limits; the manual explains safe removal and recycling.'],
+  ['ErP', 'Ecodesign for energy-related products (2009/125/EC)', 'Standby and external power supply regulations applied where relevant.'],
+  ['REACH', 'Registration, Evaluation, Authorisation and restriction of Chemicals (EC 1907/2006)', 'As a downstream user we require REACH compliance from suppliers; products meet the phthalate restrictions.'],
+  ['GPSR', 'General Product Safety (2001/95/EC; UK GPSR 2005)', 'The general safety requirement applies wherever no specific directive does.'],
+];
+---
+<Base title="Product Compliance: CE, UKCA and Standards" description="AudioSigns Hazard Warning Signs carry CE and UKCA marks, are independently tested to the EMC, electrical safety and RoHS standards listed here, and comply with WEEE, Batteries, REACH and ErP requirements.">
+  <PageHero eyebrow="Product compliance" title="CE and UKCA marked. Independently tested." standfirst="Every AudioSign leaves Ripon with a Declaration of Conformity behind it. This page lists what the sign is tested to and which regulations it meets, so your procurement team can tick the box without a phone call." />
+
+  <section class="section">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-7 prose">
+        <h2 class="h3">Declaration of Conformity</h2>
+        <p>AudioSigns Ltd declares under its sole responsibility that the Hazard Warning Sign (part number HWS) complies with the UK Electromagnetic Compatibility Regulations 2016, the UK Electrical Equipment (Safety) Regulations 2016 and the UK General Product Safety Regulations 2005, and with the Restriction of Hazardous Substances Regulations 2012. Testing to the relevant standards was carried out by an independent laboratory. The equivalent CE declaration covers the EU market.</p>
+        <p>Copies of the signed UK and EU declarations are available on request; email <a href="mailto:inspired@audiosigns.co.uk">inspired@audiosigns.co.uk</a>.</p>
+
+        <h2 class="h3">Standards applied</h2>
+        <ul class="standards">
+          {standards.map((s) => <li class="mono">{s}</li>)}
+        </ul>
+
+        <h2 class="h3">Directives and regulations</h2>
+        <dl class="directives">
+          {directives.map(([short, full, line]) => (
+            <>
+              <dt><strong>{short}</strong> <span class="small">{full}</span></dt>
+              <dd>{line}</dd>
+            </>
+          ))}
+        </dl>
+
+        <h2 class="h3">Data protection</h2>
+        <p>The sign itself holds no personal data and connects to nothing. Our handling of enquiry data is set out in the <a href={url('/privacy')}>privacy notice</a>.</p>
+
+        <p class="small">This page is about the product's conformity as electrical equipment. For what the Safety Signs and Signals Regulations 1996 say about spoken safety signs, see <a href={url('/compliance')}>Compliance</a>.</p>
+      </div>
+      <aside class="span-5 card" style="gap: 14px;">
+        <h2 class="h3" style="font-size: 18px;">At a glance</h2>
+        <dl class="facts">
+          <dt>Marks</dt><dd>CE · UKCA</dd>
+          <dt>Product</dt><dd>Hazard Warning Sign, part HWS</dd>
+          <dt>Ingress</dt><dd>IP44</dd>
+          <dt>Safety standard</dt><dd>BS EN IEC 62368-1:2020</dd>
+          <dt>RoHS</dt><dd>Compliant, S.I. 2012 No. 3033</dd>
+          <dt>Declarations</dt><dd>UK and EU, signed by the director, available on request</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <FinalCta heading="Procurement happy? Start with one sign." body="Scoped, scripted, recorded and built to order. Days from sign-off." />
+</Base>
+<style>
+  .standards { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; padding: 0; font-size: 14px; color: var(--text-2); }
+  @media (max-width: 600px) { .standards { grid-template-columns: 1fr; } }
+  .directives { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .directives dt { font-size: 16px; }
+  .directives dt .small { display: block; margin-top: 2px; }
+  .directives dd { margin: 4px 0 0; font-size: 16px; color: var(--text-2); }
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; font-size: 15px; }
+  .facts dt { font-weight: 600; }
+  .facts dd { margin: 0; color: var(--text-2); }
+</style>

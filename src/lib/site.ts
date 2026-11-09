@@ -2,10 +2,11 @@ export const site = {
   name: 'AudioSigns',
   phone: '01765 522765',
   phoneHref: 'tel:+441765522765',
-  email: 'enquiries@audiosigns.co.uk', // TODO David: confirm (old site used Inspired@, rebuild used enquires@)
+  email: 'inspired@audiosigns.co.uk',
   address: 'Boroughbridge Road, Ripon, North Yorkshire HG4 1QW',
   hours: 'Monday to Friday, 9am to 5pm UK time',
-  legalName: 'AudioSigns Ltd', // TODO David: confirm registered name
+  legalName: 'AudioSigns Ltd',
+  registeredOffice: 'Harelands Courtyard Offices, Moor Road, Melsonby, Richmond, North Yorkshire DL10 5NY',
 };
 
 const preview = process.env.PREVIEW === '1';
