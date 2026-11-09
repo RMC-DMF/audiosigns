@@ -51,6 +51,7 @@ const caseStudies = defineCollection({
     role: z.string(),
     order: z.number(),
     todo: z.string().optional(),
+    goodPractice: z.string().optional(),
   }),
 });
 

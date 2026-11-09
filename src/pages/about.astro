@@ -4,38 +4,55 @@ import PageHero from '../components/PageHero.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { site } from '../lib/site';
 ---
-<Base title="About AudioSigns | Talking Safety Signs, Made in Ripon" description="AudioSigns began in 2016 on a working site where the signs were all there and nobody was looking at them. Designed, assembled and despatched from Ripon, North Yorkshire.">
+<Base title="About AudioSigns | Talking Safety Signs, Made in Ripon" description="AudioSigns was founded by David Crack, a former health and safety manager with twenty years in loudspeaker manufacturing, after watching experienced staff walk past the signs they'd been trained on. Designed, assembled and despatched from Ripon, North Yorkshire.">
   <PageHero eyebrow="About" title="Meet the voice behind the voice." />
 
   <section class="section">
     <div class="wrap grid grid-12" style="align-items: start;">
       <div class="span-7 prose">
         <h2 class="h3">Where it started</h2>
-        <p>AudioSigns began in 2016 with a simple observation on a working site: the signs were all there, and nobody was looking at them. David Crack had spent long enough around health and safety to know this wasn't a signage problem. It was an attention problem. The fix had to be something the brain couldn't file away.</p>
-        <p class="todo">David to supply: background before AudioSigns, and the site or moment that prompted the idea.</p>
+        <p>Before AudioSigns, David Crack spent more than twenty years in hi-fi manufacturing, most of it in loudspeakers, and in quality systems, writing and auditing ISO 9001. Then his career turned: twelve years of technical sales and manufacturing became a role as Health &amp; Safety Manager and Quality Manager.</p>
+        <p>Between 2007 and 2016 he drove health, safety and environmental improvements across several businesses, and for four of those years he was responsible for site safety at offices shared by four companies. That is where the idea came from.</p>
+        <blockquote class="pull">“Familiarity, sign blindness, is an enormous issue for all levels of business, whether the staff involved are new workers, experienced staff, supervisors, senior management or directors. I was often frustrated by co-workers forgetting their health and safety training and failing to respond to signs in the workplace. What was needed was a sign that spoke and told you the message, as if a manager or supervisor had been present and reminded a worker to follow a certain procedure.”<footer>David Crack, founder</footer></blockquote>
+        <p>Twenty years of making things that reproduce sound well, ten years of watching safety signs fail, and one idea that joined them.</p>
 
         <h2 class="h3">How we built it</h2>
-        <p>We worked with a neuroscientist specialising in sound perception <span class="todo">name TBC</span> to understand why a spoken warning gets through when a printed one doesn't, and we designed the product around that: a sensor so it only speaks when someone's there, a scripted message for each hazard, and a voice recorded to carry authority without aggression.</p>
+        <p>AudioSigns were developed with Professor Deborah Withington of the University of Leeds, a neurophysiologist who has spent more than twenty years studying how people respond to sound, including the habituation that makes static signs fail. She is the inventor of the broadband reversing alarm now fitted to delivery fleets worldwide, and she helped us design a sign the brain treats as new on every approach: a sensor so it only speaks when someone's there, a scripted message for each hazard, and a voice recorded to carry authority without aggression.</p>
 
         <h2 class="h3">How we work</h2>
-        <p>Every sign is scripted with the client. Generic recordings are compromises; the words, the pace and the tone are chosen for the site, the hazard and the people who'll hear it. Bespoke artwork and a recorded message usually turn around in a matter of days, and we ship worldwide.</p>
+        <p>Every sign is scripted with the client. Generic recordings are compromises; the words, the pace and the tone are chosen for the site, the hazard and the people who'll hear it. The draft recording and the artwork go to you for approval, and nothing ships until you've signed off both. Bespoke artwork and a recorded message usually turn around in a matter of days, and we ship worldwide.</p>
 
         <h2 class="h3">Where we are</h2>
         <p>Designed, assembled and despatched from Ripon, North Yorkshire. {site.address}. <a href={site.phoneHref}>{site.phone}</a>.</p>
       </div>
       <div class="span-5 stack">
         <div class="placeholder" style="aspect-ratio: 4/5; border-radius: var(--radius-lg); background: var(--ink-2); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-3); font-size: 14px; text-align: center; padding: 24px;">Photo: David on site, a sign on Heras fencing behind him</div>
-        <div class="card" id="sustainability" style="gap: 8px;">
-          <h3 class="h3" style="font-size: 18px;">Sustainability</h3>
-          <p style="font-size: 15px; color: var(--text-2);">Battery powered, no wiring, boards re-usable across sites. <span class="todo">confirm claims</span></p>
-        </div>
         <div class="card" id="quality" style="gap: 8px;">
-          <h3 class="h3" style="font-size: 18px;">Quality</h3>
-          <p style="font-size: 15px; color: var(--text-2);"><span class="todo">ISO / testing / certification to confirm before claiming</span></p>
+          <h3 class="h3" style="font-size: 18px;">Quality and certification</h3>
+          <p style="font-size: 15px; color: var(--text-2);">CE and UKCA certified. Designed by a founder who spent years writing and auditing ISO 9001 systems, which shows in the paperwork.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white" id="sustainability">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-5 stack" style="gap: 12px;">
+        <p class="eyebrow">Sustainability</p>
+        <h2 class="h2">Simplify, then add lightness.</h2>
+        <p class="body-lg">Colin Chapman's rule for racing cars is our rule for signs. Every AudioSign is designed to be as simple and light as it can be without giving up strength, performance or reliability.</p>
+      </div>
+      <div class="span-7 prose">
+        <p>We use life-cycle analysis to look at the environmental impact of everything we do, from raw material extraction through manufacture and distribution to end-of-life recycling or disposal.</p>
+        <p>Low material use is the start. The materials themselves are chosen for long life: every enclosure is moulded from polymers that are fire retardant and resistant to UV damage, so a sign on a fence lasts. When its time comes, those same materials were chosen to be easy to recycle.</p>
+        <p>Packaging is designed around standard pallets and the space inside an aircraft hold, so a batch of signs ships with as little packaging and as few miles per sign as we can manage. Lean use of the planet's resources also happens to make the sign cheaper to make and cheaper to buy.</p>
       </div>
     </div>
   </section>
 
   <FinalCta />
 </Base>
+<style>
+  .pull { margin: 8px 0; padding: 20px 24px; border-left: 3px solid var(--accent); background: var(--paper-2); font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.45; color: var(--text); }
+  .pull footer { margin-top: 12px; font-family: var(--font-body); font-weight: 400; font-size: 14px; color: var(--text-3); }
+</style>

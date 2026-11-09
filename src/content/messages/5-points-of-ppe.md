@@ -6,7 +6,7 @@ tag: "Site entrance"
 audio: "/audio/placeholder.wav"
 where: "Site entrance turnstile or gate, on Heras fencing; triggers as people walk through."
 why: "A greeting first, then the list. People comply with an instruction they feel was addressed to them; \"welcome\" does that. Naming each item beats \"full PPE\", which everyone interprets differently."
-variants: ["Client-branded board (Tilbury Douglas, Kier and Wates versions in use)", "Additional language recordings available [TODO David: list]"]
+variants: ["Client-branded board (Tilbury Douglas, Kier and Wates versions in use)", "Recorded in Welsh, Polish, Russian, German, Latvian, Lithuanian, Hungarian, Bulgarian and Portuguese as well as English"]
 seenOn: ["Tilbury Douglas", "Kier", "Wates", "Caddick"]
 sectors: ["construction"]
 featured: true

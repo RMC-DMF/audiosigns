@@ -13,15 +13,15 @@ const tarmac = await getEntry('caseStudies', 'tarmac');
 const quotes = ['willmott-dixon', 'nhs-borders', 'vistry'];
 const testimonials = (await getCollection('testimonials')).filter((t) => quotes.includes(t.id)).sort((a, b) => quotes.indexOf(a.id) - quotes.indexOf(b.id));
 ---
-<Base title="Talking Safety Signs for High-Risk Sites | AudioSigns" description="AudioSigns are talking safety signs that speak as people approach. Backed by behavioural science, recognised in UK safety-sign law, trusted on construction, manufacturing and NHS sites. Built to order in Ripon, shipped worldwide.">
+<Base title="Talking Safety Signs for High-Risk Sites | AudioSigns" description="AudioSigns are talking safety signs that speak as people approach, so the message lands whether or not anyone is looking. Developed with a University of Leeds neurophysiologist, recognised in UK safety-sign law, trusted by Tarmac, Willmott Dixon and the NHS. Built to order in Ripon, shipped worldwide.">
 
   <!-- HERO -->
   <section class="dark hero">
     <div class="wrap grid grid-12 hero__grid">
       <div class="span-7 stack" style="gap: 28px;">
         <p class="eyebrow">Talking safety signs</p>
-        <h1 class="display" style="max-width: 12ch;">The sign they can't walk past.</h1>
-        <p class="lede" style="max-width: 34em;">AudioSigns speak as people approach. A spoken warning cuts through the sign blindness that sets in within days on every site, and it's a form of safety sign UK law has recognised since 1996.</p>
+        <h1 class="display" style="max-width: 13ch;">The sign that speaks whether or not you look.</h1>
+        <p class="lede" style="max-width: 34em;">Within days, nobody reads the signs on a site. AudioSigns speak as people approach, so the message lands even when no one is looking, and a spoken message has been a recognised safety sign in UK law since 1996.</p>
         <div class="hero__ctas">
           <a href={url(cta.href)} class="btn btn--accent">{cta.label}</a>
           <a href={url('/messages')} class="btn btn--ghost-dark">
@@ -62,7 +62,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
       <div class="stack" style="max-width: 760px; gap: 16px;">
         <p class="eyebrow">Why it works</p>
         <h2 class="h2">Designed to interrupt. Built to be heard.</h2>
-        <p class="body-lg">AudioSigns were developed with a neuroscientist who specialises in how people perceive sound. <span class="todo">confirm name</span> Three things make a spoken warning work where a printed one has stopped working.</p>
+        <p class="body-lg">AudioSigns were developed with Professor Deborah Withington, neurophysiologist at the University of Leeds and the inventor of the broadband reversing alarm. Three things make a spoken warning work where a printed one has stopped working.</p>
       </div>
       <div class="grid grid-3">
         <article class="card">
@@ -81,7 +81,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
           <p style="font-size: 16px; color: var(--text-2);">People ignore a sign they assume isn't for them. A message triggered by your approach, in your language, recorded for this site and this hazard, is hard to dismiss as someone else's problem.</p>
         </article>
       </div>
-      <p class="small" style="font-size: 15px;">In laboratory and field trials, warnings given by voice as well as in print produced significantly higher compliance than print alone. <a href={url('/why-audio-works')} class="link" style="color: var(--text);">Read the research →</a></p>
+      <p class="small" style="font-size: 15px;">In a controlled study, 11% of people complied with a printed warning sign. Add a voice to the same sign and 72% did: six and a half times the compliance. <a href={url('/why-audio-works')} class="link" style="color: var(--text);">Read the research →</a></p>
     </div>
   </section>
 
@@ -92,7 +92,7 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
         <div class="span-5 card card--dark" style="gap: 20px; padding: 40px;">
           <p class="eyebrow" style="color: var(--accent);">Case study · {tarmac.data.client}{tarmac.data.location ? `, ${tarmac.data.location}` : ''}</p>
           <p class="h2" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.12;">{tarmac.data.headline}</p>
-          <p class="small" style="color: var(--text-on-dark-2); font-size: 15px;">{tarmac.data.name}, {tarmac.data.role}</p>
+          <p class="small" style="color: var(--text-on-dark-2); font-size: 15px;">{tarmac.data.name}, {tarmac.data.role} · Sept to Nov 2023</p>
           <a href={url(`/results/${tarmac.id}`)} class="link" style="align-self: flex-start; color: var(--text-on-dark);">Read the case study →</a>
         </div>
       )}

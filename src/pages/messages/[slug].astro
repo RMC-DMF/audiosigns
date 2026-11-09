@@ -46,12 +46,13 @@ const sectors = entry.data.sectors.map((s) => industries.find((i) => i.id === s)
       <aside class="span-5 card" style="gap: 14px;">
         <h2 class="h3" style="font-size: 18px;">Product facts</h2>
         <dl class="facts">
-          <dt>Trigger</dt><dd>Motion sensor, plays when someone is within range <span class="todo">range TBC</span></dd>
-          <dt>Power</dt><dd>Battery; mains option for high-traffic locations <span class="todo">battery life TBC</span></dd>
-          <dt>Weather rating</dt><dd><span class="todo">IP rating TBC</span></dd>
+          <dt>Trigger</dt><dd>Motion sensor, plays when someone is within 3 to 4 metres</dd>
+          <dt>Power</dt><dd>Battery, around 20 hours of total playback at 20°C (a typical 5-second message plays roughly 15,000 times); mains option for high-traffic locations</dd>
+          <dt>Weather rating</dt><dd>IP44</dd>
           <dt>Mounting</dt><dd>Heras fencing, shuttering, cladding, brickwork, stonework</dd>
-          <dt>Languages</dt><dd>Multiple recordings on one sign</dd>
+          <dt>Languages</dt><dd>Multiple recordings on one sign. Recorded to date: English, Welsh, Polish, Russian, German, Latvian, Lithuanian, Hungarian, Bulgarian, Portuguese</dd>
           <dt>Storage</dt><dd>Up to 8 minutes of audio per sign</dd>
+          <dt>Certification</dt><dd>CE and UKCA</dd>
         </dl>
         {entry.data.seenOn.length > 0 && <p class="small">Seen on: {entry.data.seenOn.join(' · ')}</p>}
         <a href={url(cta.href)} class="btn btn--ink" style="align-self: flex-start; margin-top: 6px;">Start with this sign</a>
