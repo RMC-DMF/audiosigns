@@ -14,7 +14,7 @@ const featured = (await getCollection('messages', ({ data }) => data.featured)).
   </section>
   <section class="section dark" style="padding-top: 0;">
     <div class="wrap grid grid-3">
-      {featured.map((m) => <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />)}
+      {featured.map((m) => <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} alarm={m.data.alarm} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />)}
     </div>
   </section>
 </Base>

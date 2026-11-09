@@ -50,7 +50,10 @@ const steps = [
         <div class="field"><label for="quantity">Roughly how many signs?</label>
           <select id="quantity" name="quantity"><option>1</option><option>2–5</option><option>6–20</option><option>20+</option><option>Not sure yet</option></select>
         </div>
-        <button type="submit" class="btn btn--accent" style="margin-top: 8px;">Book my scoping call</button>
+        <button type="submit" class="btn btn--accent form__submit" style="margin-top: 8px;" data-submit>
+          <span class="form__label">Book my scoping call</span>
+          <svg class="form__tick" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </button>
         <p class="small">Prefer to talk? <a href={site.phoneHref}>{site.phone}</a>, {site.hours}.</p>
       </form>
     </div>
@@ -59,4 +62,15 @@ const steps = [
 <style>
   .form { gap: 16px; }
   .form .btn { width: 100%; }
+  .form__tick { display: none; }
+  .form__tick path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: tick 0.45s var(--ease-out) 0.1s forwards; }
+  @keyframes tick { to { stroke-dashoffset: 0; } }
+  .form__submit.is-sent { background: var(--ink); color: var(--text-on-dark); pointer-events: none; }
+  .form__submit.is-sent .form__label { display: none; }
+  .form__submit.is-sent .form__tick { display: block; }
 </style>
+<script>
+  const form = document.querySelector<HTMLFormElement>('form[name="start"]');
+  const btn = form?.querySelector<HTMLButtonElement>('[data-submit]');
+  form?.addEventListener('submit', () => { btn?.classList.add('is-sent'); btn?.setAttribute('aria-label', 'Sending'); });
+</script>

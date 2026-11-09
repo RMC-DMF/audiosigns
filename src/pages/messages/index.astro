@@ -20,7 +20,7 @@ const hazards = Array.from(new Set(messages.map((m) => m.data.hazard)));
       <div class="grid grid-3" data-grid>
         {messages.map((m) => (
           <div data-hazard={m.data.hazard}>
-            <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />
+            <AudioPlayer compact title={m.data.title} script={m.data.script} src={m.data.audio} alarm={m.data.alarm} tag={m.data.tag} context={m.data.hazard} href={url(`/messages/${m.id}`)} />
           </div>
         ))}
       </div>
@@ -32,9 +32,12 @@ const hazards = Array.from(new Set(messages.map((m) => m.data.hazard)));
 </Base>
 <style>
   .filters { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink-4); background: transparent; color: var(--text-on-dark); font-size: 14px; font-weight: 500; cursor: pointer; }
+  .chip { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink-4); background: transparent; color: var(--text-on-dark); font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color var(--t-fast), color var(--t-fast), border-color var(--t-fast), transform var(--t-fast) var(--ease-out); }
+  .chip:hover { border-color: var(--accent); transform: translateY(-1px); }
   .chip.is-active { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+  [data-hazard] { transition: opacity var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out); }
   [data-hazard].is-hidden { display: none; }
+  [data-hazard].is-entering { opacity: 0; transform: translateY(10px); }
 </style>
 <script>
   const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
@@ -42,6 +45,12 @@ const hazards = Array.from(new Set(messages.map((m) => m.data.hazard)));
   chips.forEach((c) => c.addEventListener('click', () => {
     chips.forEach((x) => x.classList.toggle('is-active', x === c));
     const f = c.dataset.filter;
-    items.forEach((i) => i.classList.toggle('is-hidden', f !== 'all' && i.dataset.hazard !== f));
+    items.forEach((i) => {
+      const show = f === 'all' || i.dataset.hazard === f;
+      if (show && i.classList.contains('is-hidden')) {
+        i.classList.add('is-entering'); i.classList.remove('is-hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => i.classList.remove('is-entering')));
+      } else if (!show) { i.classList.add('is-hidden'); }
+    });
   }));
 </script>
