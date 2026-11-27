@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import Scene from '../components/Scene.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { url } from '../lib/site';
 
@@ -22,7 +23,13 @@ const sources = [
 <Base title="Why Talking Safety Signs Work: The Science" description="Why people stop seeing safety signs, why a spoken message gets through, and what the compliance research actually shows. Every claim linked to its source.">
   <PageHero eyebrow="Why audio works" title="Backed by science. Built for safety." standfirst="Safety signs fail for a reason that has nothing to do with the sign. This page explains what happens in the brain when a warning is repeated, why a spoken message gets through, and what the research actually shows. Every claim links to its source." />
 
-  <section class="section">
+  <div class="wrap">
+    <figure class="scene-hero">
+      <Scene slug="before-after" alt="Two-panel illustration. Left: a worker walks straight past a wall of printed safety signs without looking. Right: the same worker turns his head towards a single sign that is speaking." eager />
+    </figure>
+  </div>
+
+  <section class="section" style="padding-top: clamp(40px, 5vw, 64px);">
     <div class="wrap prose">
       <h2 class="h2">1. Why people stop seeing signs</h2>
       <p>A warning only keeps your attention if something reinforces it. On most sites, nothing does. The forklift lane is usually empty. The drop is behind a barrier. The sign says “danger” a thousand times and nothing happens a thousand times, so the brain does what brains do with any repeated, unreinforced signal: it files it as background.</p>
