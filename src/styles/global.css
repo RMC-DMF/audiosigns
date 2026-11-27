@@ -120,6 +120,8 @@ ul, ol { margin: 0; padding: 0; }
 .scene-hero { margin: calc(-1 * clamp(24px, 4vw, 56px)) 0 0; position: relative; z-index: 1; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--rule); background: var(--paper-2); }
 .scene-hero figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 18px; font-size: 13px; color: var(--text-on-dark-2); background: linear-gradient(to top, rgba(26,26,28,.72), rgba(26,26,28,0)); }
 @media (max-width: 700px) { .scene-hero { aspect-ratio: 3 / 2; } }
+.step-art { display: block; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--rule); background: var(--paper-2); margin-bottom: 6px; }
+.step-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .scene-tile { margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .scene-tile .scene { aspect-ratio: 3 / 2; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--rule); }
 .scene-tile figcaption { font-size: 14px; color: var(--text-3); }
