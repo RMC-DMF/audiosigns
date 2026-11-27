@@ -43,7 +43,14 @@ const msg = d.message ? await getEntry('messages', d.message) : null;
       <figure class="span-5 card card--dark" style="margin: 0; gap: 16px; padding: 36px;">
         <blockquote style="margin: 0; font-size: 19px; line-height: 1.5;">“{d.quote}”</blockquote>
         <figcaption class="small" style="color: var(--text-on-dark-2);">{d.name}{d.role ? `, ${d.role}` : ''}</figcaption>
-        <div class="placeholder" style="aspect-ratio: 4/3; border-radius: 8px; background: var(--ink-2); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-3); font-size: 14px;">Photo: sign in situ at {d.client}</div>
+        {d.board ? (
+          <figure class="board" style="margin-top: 8px;">
+            <img src={d.board} alt={`An AudioSign board supplied to ${d.client}`} loading="lazy" width="640" height="900">
+            <figcaption>{d.boardNote ?? `Client-branded board as supplied to ${d.client}.`}</figcaption>
+          </figure>
+        ) : (
+          <div class="placeholder" style="aspect-ratio: 4/3; border-radius: 8px; background: var(--ink-2); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-3); font-size: 14px;">Photo: sign in situ at {d.client}</div>
+        )}
       </figure>
     </div>
   </section>

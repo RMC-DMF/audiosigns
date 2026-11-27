@@ -10,5 +10,6 @@ variants: ["Greencore and Stateside Foods versions in use", "Bilingual version f
 seenOn: ["Stateside Foods", "Greencore"]
 sectors: ["manufacturing", "healthcare-nhs"]
 featured: true
+board: "/images/boards/greencore-hold-the-handrails.jpg"
 ---
 

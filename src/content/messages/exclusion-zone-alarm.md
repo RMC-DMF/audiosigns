@@ -12,4 +12,5 @@ sectors: ["construction"]
 verify: true
 variants: []
 featured: false
+board: "/images/boards/no-unauthorised-persons-b.jpg"
 ---

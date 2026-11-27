@@ -28,6 +28,21 @@ const hazards = Array.from(new Set(messages.map((m) => m.data.hazard)));
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap stack stack--lg">
+      <div class="stack" style="gap: 12px; max-width: 760px;">
+        <p class="eyebrow">What arrives</p>
+        <h2 class="h2">One unit. Any board.</h2>
+        <p class="body-lg">The electronics are the same on every sign; the board is printed for your site, your hazard and your brand. A few from recent orders.</p>
+      </div>
+      <div class="grid grid-5" style="gap: 16px;">
+        {['mjs-working-at-height','willmott-dixon-all-safe','greencore-hold-the-handrails','moving-vehicles-mobile-phones','hpr-site-safety','mjs-cutting-station','bam','eye-protection-b','please-wash-your-hands','no-unauthorised-persons-a'].map((b) => (
+          <figure class="board board--tile"><img src={`/images/boards/${b}.jpg`} alt="" loading="lazy" width="320" height="450"></figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <FinalCta heading="Don't hear your hazard?" body="Every message is scripted for the site it stands on. Tell us the hazard and we'll write it." />
 </Base>
 <style>

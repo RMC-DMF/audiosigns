@@ -12,4 +12,5 @@ verify: true
 variants: []
 alarm: false
 featured: false
+board: "/images/boards/mjs-lifting-overhead.jpg"
 ---

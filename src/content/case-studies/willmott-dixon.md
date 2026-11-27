@@ -10,5 +10,6 @@ name: "Bradley Lowes"
 role: "Building Manager"
 order: 2
 todo: "Ask for one measurable: near-miss reports, PPE observations, anything."
+board: "/images/boards/willmott-dixon-all-safe.jpg"
 ---
 

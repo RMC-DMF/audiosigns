@@ -177,3 +177,11 @@ ul, ol { margin: 0; padding: 0; }
 }
 /* No JS: show everything */
 .no-js .reveal { opacity: 1; transform: none; }
+
+/* Product photo: catalogue shot on its own grey seamless, framed */
+.board { margin: 0; border: 1px solid var(--rule); border-radius: var(--radius-lg); overflow: hidden; background: #DADADA; }
+.board img { width: 100%; height: auto; display: block; }
+.board--tile img { aspect-ratio: 32 / 45; object-fit: cover; object-position: center; }
+.board figcaption { padding: 10px 14px; font-size: 13px; color: var(--text-3); background: var(--paper-2); border-top: 1px solid var(--rule); }
+.dark .board { border-color: var(--ink-3); }
+.dark .board figcaption { background: var(--ink-2); color: var(--text-on-dark-3); border-top-color: var(--ink-3); }

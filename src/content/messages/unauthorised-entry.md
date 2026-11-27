@@ -11,4 +11,5 @@ variants: []
 seenOn: []
 alarm: false
 featured: false
+board: "/images/boards/no-unauthorised-persons-a.jpg"
 ---

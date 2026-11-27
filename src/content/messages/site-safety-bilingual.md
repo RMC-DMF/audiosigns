@@ -8,5 +8,6 @@ where: "Building entrances; one board, two recordings."
 why: "The Regulations require that hearers understand the language used. Two recordings on one sign meets that without two signs."
 seenOn: ["Rhondda Cynon Taf CBC"]
 sectors: ["councils-public-sector"]
+board: "/images/boards/site-safety-landscape.jpg"
 ---
 

@@ -43,7 +43,14 @@ const sectors = entry.data.sectors.map((s) => industries.find((i) => i.id === s)
           </>
         )}
       </div>
-      <aside class="span-5 card" style="gap: 14px;">
+      <aside class="span-5 stack">
+        {entry.data.board && (
+          <figure class="board">
+            <img src={entry.data.board} alt={`An AudioSign board: ${entry.data.title}`} loading="lazy" width="640" height="900">
+            <figcaption>The board as it ships. Branding and wording are yours to specify.</figcaption>
+          </figure>
+        )}
+        <div class="card" style="gap: 14px;">
         <h2 class="h3" style="font-size: 18px;">Product facts</h2>
         <dl class="facts">
           <dt>Trigger</dt><dd>Motion sensor, plays when someone is within 3 to 4 metres</dd>
@@ -56,6 +63,7 @@ const sectors = entry.data.sectors.map((s) => industries.find((i) => i.id === s)
         </dl>
         {entry.data.seenOn.length > 0 && <p class="small">Seen on: {entry.data.seenOn.join(' · ')}</p>}
         <a href={url(cta.href)} class="btn btn--ink" style="align-self: flex-start; margin-top: 6px;">Start with this sign</a>
+        </div>
       </aside>
     </div>
   </section>

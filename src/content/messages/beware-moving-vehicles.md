@@ -8,5 +8,6 @@ where: "Yard crossings and vehicle lanes."
 why: "Addressed to the pedestrian, not the driver."
 sectors: ["warehousing-logistics"]
 verify: true
+board: "/images/boards/moving-vehicles-mobile-phones.jpg"
 ---
 

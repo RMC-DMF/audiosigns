@@ -7,5 +7,6 @@ audio: "/audio/use-hand-sanitiser.mp3"
 where: "Reception desks and ward entrances; brickwork mount."
 why: "Short enough to be heard in full by someone walking past."
 sectors: ["healthcare-nhs"]
+board: "/images/boards/wash-and-sanitise.jpg"
 ---
 

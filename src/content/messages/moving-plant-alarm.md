@@ -11,5 +11,6 @@ seenOn: ["RG Carter", "Seddon", "MJS Construction"]
 sectors: ["construction"]
 alarm: true
 featured: true
+board: "/images/boards/mjs-moving-plant.jpg"
 ---
 

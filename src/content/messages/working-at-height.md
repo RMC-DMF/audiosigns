@@ -9,5 +9,6 @@ why: "Names the hazard and the action in one breath."
 seenOn: ["Potteries Mechanical Services"]
 sectors: ["construction"]
 verify: true
+board: "/images/boards/mjs-working-at-height.jpg"
 ---
 

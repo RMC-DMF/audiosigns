@@ -8,6 +8,7 @@ order: 2
 hazards: ["Eye and hearing protection at specific machines", "Hold the handrail", "Hand hygiene on food lines", "Forklift and pedestrian separation"]
 messages: ["eye-protection", "hold-the-handrail", "please-wash-your-hands", "protective-footwear"]
 testimonials: ["stateside-foods"]
+board: "/images/boards/eye-protection-b.jpg"
 ---
 
 A factory floor is full of signs and short of attention. Eye protection, guarding, handrails, hygiene: the instruction is on the wall and the habit is somewhere else. A spoken instruction at the machine, triggered as the operator arrives, puts the rule back at the moment it matters.

@@ -10,5 +10,6 @@ variants: ["Client-branded board (Tilbury Douglas, Kier and Wates versions in us
 seenOn: ["Tilbury Douglas", "Kier", "Wates", "Caddick"]
 sectors: ["construction"]
 featured: true
+board: "/images/boards/willmott-dixon-all-safe.jpg"
 ---
 

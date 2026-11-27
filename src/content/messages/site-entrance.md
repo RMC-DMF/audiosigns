@@ -8,5 +8,6 @@ where: "Site and depot entrances."
 why: "A greeting and one instruction."
 seenOn: ["Hill Construction"]
 sectors: ["councils-public-sector", "construction"]
+board: "/images/boards/hpr-site-safety.jpg"
 ---
 

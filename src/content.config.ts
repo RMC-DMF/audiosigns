@@ -15,6 +15,7 @@ const industries = defineCollection({
     messages: z.array(z.string()),       // message slugs
     testimonials: z.array(z.string()),   // testimonial slugs
     secondary: z.boolean().default(false),
+    board: z.string().optional(),
   }),
 });
 
@@ -34,6 +35,7 @@ const messages = defineCollection({
     alarm: z.boolean().default(false),
     featured: z.boolean().default(false),
     verify: z.boolean().default(false),
+    board: z.string().optional(),
   }),
 });
 
@@ -54,6 +56,8 @@ const caseStudies = defineCollection({
     todo: z.string().optional(),
     goodPractice: z.string().optional(),
     message: z.string().optional(),
+    board: z.string().optional(),
+    boardNote: z.string().optional(),
   }),
 });
 

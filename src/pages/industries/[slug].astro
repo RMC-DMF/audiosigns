@@ -25,12 +25,19 @@ const testimonials = entry.data.testimonials.map((id) => allTestimonials.find((t
       <div class="span-7 prose">
         <Content />
       </div>
-      <aside class="span-5 card" style="gap: 16px;">
+      <aside class="span-5 stack">
+        {entry.data.board && (
+          <figure class="board">
+            <img src={entry.data.board} alt={`An AudioSign board used in ${entry.data.title.toLowerCase()}`} loading="lazy" width="640" height="900">
+          </figure>
+        )}
+        <div class="card" style="gap: 16px;">
         <h2 class="h3">The hazards we see most</h2>
         <ul class="hazards">
           {entry.data.hazards.map((h) => <li>{h}</li>)}
         </ul>
         <a href={url(cta.href)} class="btn btn--ink" style="align-self: flex-start; margin-top: 8px;">Start with one sign</a>
+        </div>
       </aside>
     </div>
   </section>
