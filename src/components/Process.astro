@@ -2,6 +2,7 @@
 import { url, cta } from '../lib/site';
 interface Props { compact?: boolean }
 const { compact = false } = Astro.props;
+const art = ['scope', 'script', 'artwork', 'build', 'delivery'];
 const steps = [
   ['Scoping call', 'The hazard, the location, who passes it and in which languages. Fifteen minutes.'],
   ['Script', 'We write the message for that spot. You approve the words before anything is recorded.'],
@@ -20,6 +21,10 @@ const steps = [
     <ol class="rule-list grid-5">
       {steps.map(([h, p], i) => (
         <li class="reveal" data-delay={String(Math.min(i, 4))}>
+          <picture class="step-art">
+            <source type="image/webp" srcset={`/images/process/${art[i]}.webp`}>
+            <img src={`/images/process/${art[i]}.jpg`} alt="" width="440" height="330" loading="lazy" decoding="async">
+          </picture>
           <span class="num">{i + 1}</span>
           <h3 class="h3" style="font-size: 20px;">{h}</h3>
           <p class="small" style="font-size: 15px; color: var(--text-2);">{p}</p>

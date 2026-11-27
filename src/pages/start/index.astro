@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import { site, url } from '../../lib/site';
+const art = ['scope', 'script', 'artwork', 'build', 'delivery'];
 const steps = [
   ['Scoping call', 'Fifteen minutes. The hazard, where the sign goes, who passes it, which languages they speak, and whether it needs an alarm tone as well as a voice.'],
   ['Script', 'We write the message for that spot: short, direct, in the words your workforce uses. You approve it before anything is recorded.'],
@@ -18,10 +19,16 @@ const steps = [
       <div class="span-7 stack stack--lg">
         <ol class="rule-list">
           {steps.map(([h, p], i) => (
-            <li>
-              <span class="num">{i + 1}</span>
-              <h2 class="h3">{h}</h2>
-              <p style="font-size: 16px; color: var(--text-2);">{p}</p>
+            <li class="step">
+              <picture class="step-art step-art--side">
+                <source type="image/webp" srcset={`/images/process/${art[i]}.webp`}>
+                <img src={`/images/process/${art[i]}.jpg`} alt="" width="440" height="330" loading="lazy" decoding="async">
+              </picture>
+              <div class="step__text">
+                <span class="num">{i + 1}</span>
+                <h2 class="h3">{h}</h2>
+                <p style="font-size: 16px; color: var(--text-2);">{p}</p>
+              </div>
             </li>
           ))}
         </ol>
@@ -60,6 +67,9 @@ const steps = [
   </section>
 </Base>
 <style>
+  .rule-list > .step { display: grid; grid-template-columns: 180px 1fr; gap: 20px; align-items: start; }
+  .step__text { display: flex; flex-direction: column; gap: 8px; }
+  @media (max-width: 600px) { .rule-list > .step { grid-template-columns: 1fr; } .step-art--side { max-width: 260px; } }
   .form { gap: 16px; }
   .form .btn { width: 100%; }
   .form__tick { display: none; }
