@@ -26,7 +26,13 @@ import { site, url } from '../lib/site';
         <p>Designed, assembled and despatched from Ripon, North Yorkshire. {site.address}. <a href={site.phoneHref}>{site.phone}</a>.</p>
       </div>
       <div class="span-5 stack">
-        <div class="placeholder" style="aspect-ratio: 4/5; border-radius: var(--radius-lg); background: var(--ink-2); display: flex; align-items: center; justify-content: center; color: var(--text-on-dark-3); font-size: 14px; text-align: center; padding: 24px;">Photo: David on site, a sign on Heras fencing behind him</div>
+        <figure class="portrait">
+          <picture>
+            <source type="image/webp" srcset="/images/david-illustrated-600.webp 600w, /images/david-illustrated-1000.webp 1000w" sizes="(min-width: 900px) 420px, 100vw">
+            <img src="/images/david-illustrated-1000.jpg" srcset="/images/david-illustrated-600.jpg 600w, /images/david-illustrated-1000.jpg 1000w" sizes="(min-width: 900px) 420px, 100vw" width="1000" height="1333" alt="Illustration of David Crack, founder of AudioSigns, sitting in an armchair in a dark polo shirt and orange-and-red patterned trousers, an AudioSign speaking on the wall behind him." loading="eager" decoding="async">
+          </picture>
+          <figcaption>David Crack, founder. Trousers accurate.</figcaption>
+        </figure>
         <div class="card" id="sustainability" style="gap: 8px;">
           <h3 class="h3" style="font-size: 18px;">Sustainability</h3>
           <p style="font-size: 15px; color: var(--text-2);">Simplify, then add lightness. Lean materials, signs that move from site to site, take-back at end of life. <a href={url('/sustainability')}>How we think about it →</a></p>
@@ -42,6 +48,9 @@ import { site, url } from '../lib/site';
   <FinalCta />
 </Base>
 <style>
+  .portrait { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .portrait img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--rule); }
+  .portrait figcaption { font-size: 14px; color: var(--text-3); }
   .pull { margin: 8px 0; padding: 20px 24px; border-left: 3px solid var(--accent); background: var(--paper-2); font-family: var(--font-display); font-weight: 500; font-size: 19px; line-height: 1.45; color: var(--text); }
   .pull footer { margin-top: 12px; font-family: var(--font-body); font-weight: 400; font-size: 14px; color: var(--text-3); }
 </style>
