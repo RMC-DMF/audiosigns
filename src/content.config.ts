@@ -16,6 +16,9 @@ const industries = defineCollection({
     testimonials: z.array(z.string()),   // testimonial slugs
     secondary: z.boolean().default(false),
     board: z.string().optional(),
+    scene: z.string().optional(),        // /images/scenes/<slug>
+    sceneAlt: z.string().optional(),
+    scenes: z.array(z.object({ slug: z.string(), alt: z.string(), caption: z.string() })).default([]),
   }),
 });
 

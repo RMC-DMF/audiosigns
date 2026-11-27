@@ -9,6 +9,8 @@ hazards: ["PPE compliance at the gate", "Exclusion zones and \"no unauthorised a
 messages: ["5-points-of-ppe", "moving-plant-alarm", "mewps-working", "exclusion-zone-alarm", "leading-edge", "deep-excavations"]
 testimonials: ["willmott-dixon", "bam"]
 board: "/images/boards/mjs-working-at-height.jpg"
+scene: "construction"
+sceneAlt: "Illustration: a worker in a hard hat and hi-vis on a construction site turns towards a talking sign on a cabin wall as it speaks."
 ---
 
 Construction had more deaths than any other industry last year: 25 of the 126 workers killed in Great Britain, and falls from height were the single biggest cause across all sectors. Most of those sites were signed. The problem is not the absence of a warning but a workforce that stopped seeing it after the first week on site.

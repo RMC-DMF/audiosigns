@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import FinalCta from '../../components/FinalCta.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../../lib/site';
+import Scene from '../../components/Scene.astro';
 const industries = (await getCollection('industries')).sort((a, b) => a.data.order - b.data.order);
 ---
 <Base title="Industries: Talking Safety Signs by Sector" description="Talking safety signs for construction, manufacturing, warehousing and logistics, healthcare and the public sector. The hazards we see most, the messages that work, and who's already using them.">
@@ -11,10 +12,13 @@ const industries = (await getCollection('industries')).sort((a, b) => a.data.ord
   <section class="section">
     <div class="wrap grid grid-3">
       {industries.map((i) => (
-        <a href={url(`/industries/${i.id}`)} class="card card--link">
-          <span class="h3">{i.data.title}</span>
-          <span style="font-size: 15px; color: var(--text-2);">{i.data.cardLine}</span>
-          <span class="link" style="align-self: flex-start; margin-top: auto; font-size: 15px;">See the hazards →</span>
+        <a href={url(`/industries/${i.id}`)} class:list={['card', 'card--link', { 'card--media': !!i.data.scene }]}>
+          {i.data.scene && <Scene slug={i.data.scene} alt="" sizes="(min-width: 900px) 400px, 100vw" />}
+          <span class="card__body">
+            <span class="h3">{i.data.title}</span>
+            <span style="font-size: 15px; color: var(--text-2);">{i.data.cardLine}</span>
+            <span class="link" style="align-self: flex-start; margin-top: auto; font-size: 15px;">See the hazards →</span>
+          </span>
         </a>
       ))}
     </div>
