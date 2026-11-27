@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { url } from '../lib/site';
+const stages = [
+  ['Design', 'As simple and light as the job allows. Fewer parts, less material, nothing that doesn’t earn its place on the board.'],
+  ['Materials', 'Enclosures moulded from fire-retardant, UV-resistant polymer so a sign on a fence lasts for years, chosen so it can be recycled when it doesn’t.'],
+  ['Manufacture', 'Assembled to order in Ripon. Nothing is built for stock, so nothing is built and never used.'],
+  ['Distribution', 'Packaging sized to standard pallets and aircraft holds, so a batch travels with the least packaging and the fewest miles per sign.'],
+  ['Use', 'Battery powered, no wiring, no installer, no trenching. A sign moves from site to site; the board is re-skinned, the electronics carry on.'],
+  ['End of life', 'WEEE-compliant take-back through authorised regional schemes. Batteries separable and recyclable; the manual says how.'],
+];
+---
+<Base title="Sustainability | Simplify, Then Add Lightness" description="How AudioSigns designs for the whole life-cycle: lean materials, fire-retardant recyclable enclosures, packaging sized to pallets and aircraft holds, signs that move from site to site, WEEE-compliant take-back.">
+  <PageHero eyebrow="Sustainability" title="Simplify, then add lightness." standfirst="Colin Chapman's rule for racing cars is our rule for signs. Every AudioSign is designed to be as simple and light as it can be without giving up strength, performance or reliability, and we look at the environmental cost of the whole of its life, not just the bit we make." />
+
+  <section class="section">
+    <div class="wrap grid grid-12" style="align-items: start;">
+      <div class="span-7 prose">
+        <h2 class="h3">Life-cycle analysis, not a green page</h2>
+        <p>Sustainable is commonly held to mean something that meets the needs of the present without compromising the ability of future generations to meet their own needs. For a product, that means looking at every stage: raw material extraction, manufacture, distribution, years on a fence, and what happens when it comes off. We use life-cycle analysis to do that for everything AudioSigns makes and does.</p>
+        <p>Most of the benefit comes from decisions made before a sign exists. A lighter sign uses less material, ships in less packaging and costs less to move. A sign built to last ten years on a construction site replaces several that don't. A sign that moves with the hazard, from one site to the next, is a sign that didn't need to be made twice.</p>
+        <h2 class="h3">The honest version</h2>
+        <p>An AudioSign is an electronic product with a battery in it. It is not nothing. What we can say is that it is built as lean as we know how, it lasts, it is re-used across sites, and when it is finished we take it back. That is also, as it happens, what keeps the price down for the producer and the buyer alike.</p>
+        <p>The compliance detail, including RoHS, WEEE and the Batteries Directive, is on the <a href={url('/product-compliance')}>product compliance page</a>.</p>
+      </div>
+      <div class="span-5">
+        <ol class="rule-list" style="gap: 20px;">
+          {stages.map(([h, p], i) => (
+            <li style="padding-top: 16px; gap: 6px;">
+              <span class="num" style="font-size: 28px;">{i + 1}</span>
+              <h3 class="h3" style="font-size: 18px;">{h}</h3>
+              <p style="font-size: 15px; color: var(--text-2);">{p}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <FinalCta heading="One sign. Built once. Moved often." body="Scoped, scripted, recorded and built to order in Ripon. Days from sign-off." />
+</Base>

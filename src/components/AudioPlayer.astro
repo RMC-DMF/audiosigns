@@ -17,7 +17,7 @@ const { title, script, src = null, tag, context, href, compact = false, alarm = 
 const bars = [12, 28, 44, 22, 50, 34, 16, 40, 24, 36, 14, 30, 46, 20, 38, 12, 26, 42, 18, 32];
 const id = `ap-${Math.random().toString(36).slice(2, 8)}`;
 ---
-<div class:list={['ap', { 'ap--compact': compact, 'ap--missing': !src }]} data-player data-src={src ?? ''}>
+<div class:list={['ap', { 'ap--compact': compact, 'ap--missing': !src, 'ap--alarm': alarm }]} data-player data-src={src ?? ''}>
   <div class="ap__top">
     <span class="ap__context mono">{context ?? 'AudioSigns message'}</span>
     <span class="ap__tags">
@@ -50,8 +50,11 @@ const id = `ap-${Math.random().toString(36).slice(2, 8)}`;
   .ap__context { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark-3); }
   .ap__tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
   .ap__tag { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--accent-tint); color: var(--accent); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
-  .ap__tag--alarm { background: var(--warn-tint); color: #F2A79D; }
-  .ap__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); animation: dot-pulse 1.6s ease-in-out infinite; }
+  .ap__tag--alarm { background: var(--red-tint); color: #FF8A78; }
+  .ap--alarm .ap__play { background: var(--red); color: #fff; }
+  .ap--alarm .ap__bars span.is-on { background: var(--red); }
+  .ap--alarm .ap__script { border-left-color: var(--red); }
+  .ap__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: dot-pulse 1.6s ease-in-out infinite; }
   @keyframes dot-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.75); } }
   .ap--missing .ap__bars span { background: var(--ink-3); }
   .ap__row { display: flex; align-items: center; gap: 20px; }

@@ -4,7 +4,7 @@ import { site, nav, cta, url } from '../lib/site';
 <header class="nav">
   <div class="wrap nav__row">
     <a href={url('/')} class="nav__logo" aria-label="AudioSigns home">
-      <img src="/images/logo-white.png" alt="AudioSigns" width="106" height="44">
+      <img src="/images/logo-on-dark.png" alt="AudioSigns" width="180" height="44">
     </a>
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -20,7 +20,7 @@ import { site, nav, cta, url } from '../lib/site';
 <style>
   .nav { background: var(--ink); color: var(--text-on-dark); }
   .nav__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 80px; flex-wrap: wrap; }
-  .nav__logo img { height: 44px; width: auto; }
+  .nav__logo img { height: 40px; width: auto; }
   .nav__links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; }
   .nav__links a { color: var(--text-on-dark); text-decoration: none; padding: 10px 0; }
   .nav__links a:hover { color: var(--accent); }
@@ -30,7 +30,7 @@ import { site, nav, cta, url } from '../lib/site';
   @media (max-width: 1240px) { .nav__phone { display: none; } }
   @media (max-width: 1100px) {
     .nav__row { min-height: 64px; }
-    .nav__logo img { height: 36px; }
+    .nav__logo img { height: 32px; }
     .nav__toggle { display: inline-flex; }
     .nav__links { display: none; flex-direction: column; align-items: stretch; width: 100%; gap: 4px; padding: 8px 0 20px; }
     .nav__links a { padding: 12px 0; border-bottom: 1px solid var(--ink-3); }

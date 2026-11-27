@@ -5,7 +5,7 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="wrap footer__grid">
     <div class="footer__brand">
-      <img src="/images/logo-white.png" alt="AudioSigns" width="135" height="56">
+      <img src="/images/logo-on-dark.png" alt="AudioSigns" width="196" height="48">
       <p>Talking safety signs, designed and built in Ripon, North Yorkshire. Shipped worldwide.</p>
     </div>
     <nav class="footer__nav" aria-label="Footer">
@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
       </div>
       <div>
         {nav.slice(4).map((n) => <a href={url(n.href)}>{n.label}</a>)}
-        <a href={url('/about') + '#sustainability'}>Sustainability</a>
+        <a href={url('/sustainability')}>Sustainability</a>
         <a href={url('/product-compliance')}>Product compliance</a>
       </div>
       <div>
@@ -26,7 +26,7 @@ const year = new Date().getFullYear();
     </nav>
   </div>
   <div class="wrap footer__legal">
-    <span>© {year} {site.legalName}</span>
+    <span>© {year} {site.legalName} · Registered in England &amp; Wales No. {site.companyNumber} · Registered office: {site.registeredOffice}</span>
     <a href={url('/privacy')}>Privacy</a>
   </div>
 </footer>
@@ -35,7 +35,7 @@ const year = new Date().getFullYear();
   .footer { background: var(--ink); color: var(--text-on-dark-2); padding: 64px 0 40px; font-size: 15px; }
   .footer__grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px; }
   .footer__brand { display: flex; flex-direction: column; gap: 16px; max-width: 320px; }
-  .footer__brand img { height: 56px; width: auto; }
+  .footer__brand img { height: 48px; width: auto; align-self: flex-start; }
   .footer__nav { display: flex; flex-wrap: wrap; gap: 16px 40px; }
   .footer__nav > div { display: flex; flex-direction: column; gap: 10px; }
   .footer__nav a { color: var(--text-on-dark); text-decoration: none; }
