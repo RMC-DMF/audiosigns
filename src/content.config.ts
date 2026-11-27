@@ -33,6 +33,7 @@ const messages = defineCollection({
     sectors: z.array(z.string()).default([]),
     alarm: z.boolean().default(false),
     featured: z.boolean().default(false),
+    verify: z.boolean().default(false),
   }),
 });
 
@@ -52,6 +53,7 @@ const caseStudies = defineCollection({
     order: z.number(),
     todo: z.string().optional(),
     goodPractice: z.string().optional(),
+    message: z.string().optional(),
   }),
 });
 

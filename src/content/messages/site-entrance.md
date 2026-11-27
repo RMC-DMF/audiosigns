@@ -1,9 +1,9 @@
 ---
-title: "Site Entrance"
-script: "Welcome. Please report to reception and sign in before entering."
+title: "Report to the Site Office"
+script: "All visitors must report to the site office."
 hazard: "Security"
 tag: "Entrance"
-audio: null
+audio: "/audio/site-entrance.mp3"
 where: "Site and depot entrances."
 why: "A greeting and one instruction."
 seenOn: ["Hill Construction"]

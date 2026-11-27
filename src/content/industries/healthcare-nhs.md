@@ -7,7 +7,7 @@ h1: "Messaging that staff, patients and visitors act on."
 cardLine: "Hygiene messaging that staff, patients and visitors act on. In use at NHS Borders."
 order: 4
 hazards: ["Hand hygiene at ward entrances", "Restricted and controlled areas", "Hold the handrail", "Visitor instructions during outbreaks"]
-messages: ["use-hand-sanitiser", "please-wash-your-hands", "radiation-controlled-area"]
+messages: ["use-hand-sanitiser", "please-wash-your-hands", "radiation-controlled-area", "fire-door"]
 testimonials: ["nhs-borders"]
 ---
 

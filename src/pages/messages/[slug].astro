@@ -31,7 +31,7 @@ const sectors = entry.data.sectors.map((s) => industries.find((i) => i.id === s)
     <div class="wrap grid grid-12" style="align-items: start;">
       <div class="span-7 prose">
         <h2 class="h3">What it says</h2>
-        <p>“{entry.data.script}”</p>
+        <p>“{entry.data.script}” {entry.data.verify && <span class="todo">script transcribed from file name: check against the recording</span>}</p>
         <h2 class="h3">Where it goes</h2>
         <p>{entry.data.where}</p>
         <h2 class="h3">Why this wording</h2>

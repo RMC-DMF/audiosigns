@@ -7,7 +7,7 @@ h1: "The forklift is quiet. The sign shouldn't be."
 cardLine: "Electric forklifts are quiet. Pedestrians don't hear them coming. A sign that speaks first."
 order: 3
 hazards: ["Pedestrian and vehicle separation", "Forklift operating areas", "Lower your forks", "Hi-vis and safety boots for all staff", "Site entrance for visiting drivers"]
-messages: ["forklifts-operating", "beware-moving-vehicles", "lower-your-forks"]
+messages: ["raise-the-steps", "forklifts-operating", "lower-your-forks", "no-pedestrian-access"]
 testimonials: ["tarmac", "delamode-nidd"]
 ---
 

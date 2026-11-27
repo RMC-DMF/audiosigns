@@ -6,7 +6,7 @@ h1: "Instructions people follow, not notices they pass."
 cardLine: "Eye protection at the machine, hold the handrail, hands washed before the line."
 order: 2
 hazards: ["Eye and hearing protection at specific machines", "Hold the handrail", "Hand hygiene on food lines", "Forklift and pedestrian separation"]
-messages: ["eye-protection", "hold-the-handrail", "please-wash-your-hands"]
+messages: ["eye-protection", "hold-the-handrail", "please-wash-your-hands", "protective-footwear"]
 testimonials: ["stateside-foods"]
 ---
 

@@ -10,5 +10,6 @@ quote: "Following a brief consultation and engagement with Audiosigns, a solutio
 name: "Nick Childs"
 role: "Site Manager, Tarmac Aberthaw"
 order: 1
+message: "raise-the-steps"
 goodPractice: "Tarmac's internal Health and Safety Good Practice note (Aberthaw, Sept 2023): \"Following several on-site incidents, it was felt that we needed to provide a timelier and more innovative reminder for drivers to stop them forgetting to raise the loading steps before departing. We engaged with Audiosigns, a UK based family run supplier to develop an audible sign triggered by movement. This therefore provides a constant reminder to all drivers and should result in a reduction of damage to our loading equipment. This could be used in a variety of applications / locations.\" Reproduced with permission."
 ---

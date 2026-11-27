@@ -6,7 +6,7 @@ h1: "Site signage that still works in week six."
 cardLine: "PPE at the gate, exclusion zones, working at height, moving plant."
 order: 1
 hazards: ["PPE compliance at the gate", "Exclusion zones and \"no unauthorised access\"", "Working at height, MEWPs and scissor lifts", "Moving plant and site traffic", "Cutting stations and hot works"]
-messages: ["5-points-of-ppe", "working-at-height", "moving-plant-alarm"]
+messages: ["5-points-of-ppe", "moving-plant-alarm", "mewps-working", "exclusion-zone-alarm", "leading-edge", "deep-excavations"]
 testimonials: ["willmott-dixon", "bam"]
 ---
 

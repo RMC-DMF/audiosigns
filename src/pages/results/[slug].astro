@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FinalCta from '../../components/FinalCta.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+import AudioPlayer from '../../components/AudioPlayer.astro';
 import { url } from '../../lib/site';
 
 export async function getStaticPaths() {
@@ -10,6 +11,7 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props;
 const d = entry.data;
+const msg = d.message ? await getEntry('messages', d.message) : null;
 ---
 <Base title={`${d.client}: ${d.sector} Case Study`} description={`${d.client}: ${d.headline}`}>
   <section class="dark" style="border-top: 1px solid var(--ink-3);">
@@ -27,6 +29,7 @@ const d = entry.data;
         <p>{d.problem}</p>
         <h2 class="h3">What we installed</h2>
         <p>{d.installed}</p>
+        {msg && <AudioPlayer compact title={msg.data.title} script={msg.data.script} src={msg.data.audio} alarm={msg.data.alarm} tag={msg.data.tag} context={`The message on site at ${d.client}`} href={url(`/messages/${msg.id}`)} />}
         <h2 class="h3">What changed</h2>
         <p>{d.changed}</p>
         {d.goodPractice && (
