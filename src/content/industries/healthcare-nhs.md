@@ -10,6 +10,8 @@ hazards: ["Hand hygiene at ward entrances", "Restricted and controlled areas", "
 messages: ["use-hand-sanitiser", "please-wash-your-hands", "radiation-controlled-area", "fire-door"]
 testimonials: ["nhs-borders"]
 board: "/images/boards/please-wash-your-hands.jpg"
+scene: "healthcare"
+sceneAlt: "Illustration: a nurse in a hospital corridor turns towards a talking sign on the wall as it speaks."
 ---
 
 A hospital corridor is one of the most signed spaces in the country, and one of the least read. Hygiene, wayfinding, restricted areas and infection control all compete on the same walls. A spoken message at the point of need reaches people who are stressed, distracted or can't read the sign at all.

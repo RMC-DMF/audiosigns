@@ -10,6 +10,8 @@ hazards: ["Pedestrian and vehicle separation", "Forklift operating areas", "Lowe
 messages: ["raise-the-steps", "forklifts-operating", "lower-your-forks", "no-pedestrian-access"]
 testimonials: ["tarmac", "delamode-nidd"]
 board: "/images/boards/moving-vehicles-mobile-phones.jpg"
+scene: "warehouse"
+sceneAlt: "Illustration: a warehouse worker in hi-vis turns towards a talking sign on a racking upright as it speaks, a forklift moving behind."
 ---
 
 Electric forklifts have taken the engine noise out of the warehouse and the warning with it. Pedestrians don't hear them coming. 104 members of the public were killed by work activity in Great Britain last year, and loading bays, builders' merchants and distribution centres are where staff and visitors share space with moving vehicles.

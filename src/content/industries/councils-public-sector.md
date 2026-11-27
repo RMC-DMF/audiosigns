@@ -10,6 +10,8 @@ hazards: ["Bilingual safety and hygiene messaging", "Accessibility for visually 
 messages: ["site-safety-bilingual", "site-entrance", "unauthorised-entry"]
 testimonials: ["rhondda-cynon-taf"]
 board: "/images/boards/hpr-site-safety.jpg"
+scene: "office-reception"
+sceneAlt: "Illustration: a visitor in a public building reception turns towards a talking information board as it speaks."
 ---
 
 Public buildings serve people who speak different languages, people who can't see a sign, and people who have walked past the same notice every day for years. The Safety Signs Regulations require that anyone a spoken message is aimed at understands the language; an AudioSign can carry several. Bilingual messaging is where we started with councils.

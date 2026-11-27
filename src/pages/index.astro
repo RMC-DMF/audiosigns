@@ -4,6 +4,7 @@ import AudioPlayer from '../components/AudioPlayer.astro';
 import ClientStrip from '../components/ClientStrip.astro';
 import Process from '../components/Process.astro';
 import FinalCta from '../components/FinalCta.astro';
+import Scene from '../components/Scene.astro';
 import { getCollection, getEntry } from 'astro:content';
 import { url, cta } from '../lib/site';
 
@@ -46,7 +47,6 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
         <h2 class="h2" style="max-width: 18ch;">Every site has signs. Every site has people walking past them.</h2>
         <p class="body-lg">It isn't carelessness. It's how the brain works. A warning that is never followed by the hazard it warns of is never reinforced, so the brain files it as background. Psychologists call it habituation; site managers call it sign blindness. Brain-imaging research shows attention to a repeated warning drops measurably within a single working week.</p>
         <p class="body-lg">The result is a control measure that looks compliant and does nothing. The PPE sign at the gate, the “keep to the walkway” board by the loading bay, the “hold the handrail” notice on the stairs: all still there, all unseen.</p>
-        <!-- PHOTO SLOT: sign-blindness image to come from David. Was a 242px shot of a door with eight signs; needs a full-res replacement. -->
       </div>
       <div class="span-5 card reveal" style="gap: 8px; padding: 36px;">
         <span class="stat stat--xl">126</span>
@@ -54,6 +54,15 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
         <p class="body-lg"><strong style="color: var(--red-ink);">31</strong> of them fell from height.</p>
         <p class="eyebrow" style="margin-top: 20px; font-size: 12px; color: var(--text-3);">Source · HSE, work-related fatal injuries 2025/26</p>
       </div>
+    </div>
+    <div class="wrap">
+      <figure class="overload reveal">
+        <picture>
+          <source type="image/webp" srcset="/images/sign-overload-1000.webp 1000w, /images/sign-overload-1600.webp 1600w" sizes="(min-width: 1280px) 1200px, 100vw">
+          <img src="/images/sign-overload-1600.jpg" srcset="/images/sign-overload-1000.jpg 1000w, /images/sign-overload-1600.jpg 1600w" sizes="(min-width: 1280px) 1200px, 100vw" width="1600" height="900" alt="Illustration of a worker in a hard hat and hi-vis standing in a factory where every wall, railing and column is covered in safety pictograms, looking overwhelmed." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Forty signs, and the one that matters today looks exactly like the thirty-nine that didn't yesterday.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -120,9 +129,12 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
       <h2 class="h2">Whatever the risk, we speak safety.</h2>
       <div class="grid grid-5" style="gap: 16px;">
         {industries.map((i) => (
-          <a href={url(`/industries/${i.id}`)} class="card card--link reveal" data-delay={String(Math.min(i.data.order, 4))} style="padding: 24px; min-height: 200px; gap: 10px;">
-            <span class="h3" style="font-size: 19px;">{i.data.title}</span>
-            <span style="font-size: 14px; color: var(--text-2);">{i.data.cardLine}</span>
+          <a href={url(`/industries/${i.id}`)} class:list={['card', 'card--link', 'reveal', { 'card--media': !!i.data.scene }]} data-delay={String(Math.min(i.data.order, 4))}>
+            {i.data.scene && <Scene slug={i.data.scene} alt="" sizes="(min-width: 1100px) 240px, (min-width: 700px) 33vw, 100vw" />}
+            <span class="card__body" style="padding: 18px 20px 20px;">
+              <span class="h3" style="font-size: 19px;">{i.data.title}</span>
+              <span style="font-size: 14px; color: var(--text-2);">{i.data.cardLine}</span>
+            </span>
           </a>
         ))}
       </div>
@@ -154,6 +166,9 @@ const testimonials = (await getCollection('testimonials')).filter((t) => quotes.
   .hero { border-top: 1px solid var(--ink-3); }
   .hero__grid { padding-top: clamp(48px, 7vw, 96px); padding-bottom: clamp(40px, 7vw, 104px); align-items: center; }
   .hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+  .overload { margin: clamp(32px, 5vw, 56px) 0 0; display: flex; flex-direction: column; gap: 14px; }
+  .overload img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--rule); }
+  .overload figcaption { font-size: 14px; color: var(--text-3); max-width: 60ch; }
   .quote { margin: 0; padding-bottom: 20px; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 8px; }
   .quote:last-child { border-bottom: 0; padding-bottom: 0; }
   .quote blockquote { margin: 0; font-size: 19px; line-height: 1.45; }

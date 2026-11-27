@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import AudioPlayer from '../../components/AudioPlayer.astro';
 import FinalCta from '../../components/FinalCta.astro';
+import Scene from '../../components/Scene.astro';
 import { getCollection, render } from 'astro:content';
 import { url, cta } from '../../lib/site';
 
@@ -20,7 +21,15 @@ const testimonials = entry.data.testimonials.map((id) => allTestimonials.find((t
 <Base title={entry.data.titleTag} description={entry.data.description}>
   <PageHero eyebrow={`Industries · ${entry.data.title}`} title={entry.data.h1} />
 
-  <section class="section">
+  {entry.data.scene && (
+    <div class="wrap">
+      <figure class="scene-hero">
+        <Scene slug={entry.data.scene} alt={entry.data.sceneAlt ?? ''} eager />
+      </figure>
+    </div>
+  )}
+
+  <section class="section" style={entry.data.scene ? 'padding-top: clamp(40px, 5vw, 64px);' : undefined}>
     <div class="wrap grid grid-12" style="align-items: start;">
       <div class="span-7 prose">
         <Content />
@@ -41,6 +50,19 @@ const testimonials = entry.data.testimonials.map((id) => allTestimonials.find((t
       </aside>
     </div>
   </section>
+
+  {entry.data.scenes.length > 0 && (
+    <section class="section white" style="padding-top: 0;">
+      <div class="wrap grid grid-3">
+        {entry.data.scenes.map((s) => (
+          <figure class="scene-tile">
+            <Scene slug={s.slug} alt={s.alt} sizes="(min-width: 900px) 400px, 100vw" />
+            <figcaption>{s.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
 
   <section class="section dark">
     <div class="wrap stack stack--lg">
@@ -73,6 +95,11 @@ const testimonials = entry.data.testimonials.map((id) => allTestimonials.find((t
   <FinalCta heading="Book a trial on your site." body="One sign, one hazard, built for your site in days. Tell us where the signs are being ignored." />
 </Base>
 <style>
+  .scene-hero { margin: calc(-1 * clamp(24px, 4vw, 56px)) 0 0; position: relative; z-index: 1; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--rule); background: var(--paper-2); }
+  @media (max-width: 700px) { .scene-hero { aspect-ratio: 3 / 2; } }
+  .scene-tile { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .scene-tile :global(.scene) { aspect-ratio: 3 / 2; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--rule); }
+  .scene-tile figcaption { font-size: 14px; color: var(--text-3); }
   .hazards { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .hazards li { padding-left: 18px; position: relative; font-size: 16px; color: var(--text-2); }
   .hazards li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
