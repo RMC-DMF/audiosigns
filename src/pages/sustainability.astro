@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import FinalCta from '../components/FinalCta.astro';
+import Scene from '../components/Scene.astro';
 import { url } from '../lib/site';
 const stages = [
   ['Design', 'As simple and light as the job allows. Fewer parts, less material, nothing that doesn’t earn its place on the board.'],
@@ -15,7 +16,14 @@ const stages = [
 <Base title="Sustainability | Simplify, Then Add Lightness" description="How AudioSigns designs for the whole life-cycle: lean materials, fire-retardant recyclable enclosures, packaging sized to pallets and aircraft holds, signs that move from site to site, WEEE-compliant take-back.">
   <PageHero eyebrow="Sustainability" title="Simplify, then add lightness." standfirst="Colin Chapman's rule for racing cars is our rule for signs. Every AudioSign is designed to be as simple and light as it can be without giving up strength, performance or reliability, and we look at the environmental cost of the whole of its life, not just the bit we make." />
 
-  <section class="section">
+  <div class="wrap">
+    <figure class="scene-hero">
+      <Scene slug="sign-moves" alt="Two-panel illustration. Left: a worker lifts an AudioSign off Heras fencing on a construction site. Right: the same unit being fitted to the wall of a finished building, speaking." eager />
+      <figcaption>Built once, moved often. The electronics go from the fence to the next job; only the board changes.</figcaption>
+    </figure>
+  </div>
+
+  <section class="section" style="padding-top: clamp(40px, 5vw, 64px);">
     <div class="wrap grid grid-12" style="align-items: start;">
       <div class="span-7 prose">
         <h2 class="h3">Life-cycle analysis, not a green page</h2>

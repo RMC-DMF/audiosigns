@@ -95,11 +95,6 @@ const testimonials = entry.data.testimonials.map((id) => allTestimonials.find((t
   <FinalCta heading="Book a trial on your site." body="One sign, one hazard, built for your site in days. Tell us where the signs are being ignored." />
 </Base>
 <style>
-  .scene-hero { margin: calc(-1 * clamp(24px, 4vw, 56px)) 0 0; position: relative; z-index: 1; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--rule); background: var(--paper-2); }
-  @media (max-width: 700px) { .scene-hero { aspect-ratio: 3 / 2; } }
-  .scene-tile { margin: 0; display: flex; flex-direction: column; gap: 12px; }
-  .scene-tile :global(.scene) { aspect-ratio: 3 / 2; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--rule); }
-  .scene-tile figcaption { font-size: 14px; color: var(--text-3); }
   .hazards { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .hazards li { padding-left: 18px; position: relative; font-size: 16px; color: var(--text-2); }
   .hazards li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }

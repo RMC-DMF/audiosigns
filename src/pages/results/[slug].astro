@@ -4,6 +4,7 @@ import FinalCta from '../../components/FinalCta.astro';
 import { getCollection, getEntry } from 'astro:content';
 import AudioPlayer from '../../components/AudioPlayer.astro';
 import { url } from '../../lib/site';
+import Scene from '../../components/Scene.astro';
 
 export async function getStaticPaths() {
   const cases = await getCollection('caseStudies');
@@ -22,7 +23,16 @@ const msg = d.message ? await getEntry('messages', d.message) : null;
     </div>
   </section>
 
-  <section class="section">
+  {d.scene && (
+    <div class="wrap">
+      <figure class="scene-hero">
+        <Scene slug={d.scene} alt={d.sceneAlt ?? ''} eager />
+        {d.sceneCaption && <figcaption>{d.sceneCaption}</figcaption>}
+      </figure>
+    </div>
+  )}
+
+  <section class="section" style={d.scene ? 'padding-top: clamp(40px, 5vw, 64px);' : undefined}>
     <div class="wrap grid grid-12" style="align-items: start;">
       <div class="span-7 prose">
         <h2 class="h3">The problem</h2>

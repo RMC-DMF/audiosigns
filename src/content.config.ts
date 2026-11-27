@@ -61,6 +61,9 @@ const caseStudies = defineCollection({
     message: z.string().optional(),
     board: z.string().optional(),
     boardNote: z.string().optional(),
+    scene: z.string().optional(),
+    sceneAlt: z.string().optional(),
+    sceneCaption: z.string().optional(),
   }),
 });
 
